@@ -1,0 +1,277 @@
+<html lang='vi'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Hóa Đơn Nâng Cấp VIP</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #e5e7eb;
+        color: #e2e8f0;
+        padding: 20px;
+      }
+      .email-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #1a1c23;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
+        border: 1px solid rgba(250, 204, 21, 0.15);
+      }
+      .header {
+        background: radial-gradient(circle at top left, #facc15, #eab308, #a16207);
+        color: #0f1117;
+        padding: 30px 20px;
+        text-align: center;
+      }
+      .header h1 {
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+      .header p {
+        font-size: 15px;
+        opacity: 0.9;
+      }
+      .success-badge {
+        background-color: #22c55e;
+        color: #fff;
+        padding: 8px 20px;
+        border-radius: 20px;
+        display: inline-block;
+        margin-top: 15px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+      }
+      .content {
+        padding: 30px 25px;
+      }
+      .greeting {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #facc15;
+      }
+      .info-section {
+        background-color: #111317;
+        border-left: 4px solid #facc15;
+        padding: 20px;
+        margin: 25px 0;
+        border-radius: 8px;
+      }
+      .info-section h2 {
+        color: #facc15;
+        font-size: 19px;
+        margin-bottom: 15px;
+      }
+      .info-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #2d2f35;
+      }
+      .info-row:last-child {
+        border-bottom: none;
+      }
+      .info-label {
+        color: #94a3b8;
+        font-weight: 500;
+      }
+      .info-value {
+        color: #f1f5f9;
+        font-weight: 600;
+        text-align: right;
+      }
+      .total-section {
+        background: linear-gradient(90deg, #facc15, #eab308);
+        color: #0f1117;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 25px 0;
+        text-align: center;
+      }
+      .total-section .label {
+        font-size: 14px;
+        opacity: 0.8;
+      }
+      .total-section .amount {
+        font-size: 32px;
+        font-weight: bold;
+      }
+      .benefits {
+        margin: 25px 0;
+      }
+      .benefits h3 {
+        color: #facc15;
+        margin-bottom: 15px;
+        font-size: 18px;
+      }
+      .benefit-item {
+        display: flex;
+        align-items: center;
+        padding: 8px 0;
+        color: #e2e8f0;
+      }
+      .benefit-item::before {
+        content: '✓';
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        background-color: #22c55e;
+        color: #fff;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 22px;
+        margin-right: 12px;
+        font-weight: bold;
+      }
+      .cta-button {
+        display: block;
+        width: 100%;
+        background: linear-gradient(90deg, #facc15, #eab308);
+        color: #0f1117;
+        text-align: center;
+        padding: 14px;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: bold;
+        font-size: 16px;
+        margin: 25px 0;
+        transition: all 0.2s;
+      }
+      .cta-button:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(90deg, #fde047, #facc15);
+      }
+      .footer {
+        background-color: #111317;
+        padding: 20px;
+        text-align: center;
+        color: #94a3b8;
+        font-size: 13px;
+        border-top: 1px solid #2d2f35;
+      }
+      .footer a {
+        color: #facc15;
+        text-decoration: none;
+      }
+      .divider {
+        height: 1px;
+        background-color: #2d2f35;
+        margin: 20px 0;
+      }
+      .highlight {
+        color: #facc15;
+        font-weight: bold;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class='email-container'>
+      <!-- Header -->
+      <div class='header'>
+        <h1>Nâng Cấp VIP Thành Công</h1>
+        <p>Cảm ơn bạn đã tin tưởng sử dụng dịch vụ của chúng tôi</p>
+        <div class='success-badge'>THANH TOÁN THÀNH CÔNG</div>
+      </div>
+
+      <!-- Content -->
+      <div class='content'>
+        <p class='greeting'>Xin chào <strong>{{userName}}</strong>,</p>
+        <p style='color: #4b5563; line-height: 1.6; margin-bottom: 20px;'>
+          Chúc mừng bạn đã nâng cấp thành công gói
+          <span class='highlight'>{{planName}}</span>! Tài khoản của bạn đã được kích hoạt và bạn có thể bắt đầu trải
+          nghiệm những tính năng đặc quyền ngay bây giờ.
+        </p>
+
+        <!-- Transaction Info -->
+        <div class='info-section'>
+          <h2>Thông Tin Giao Dịch</h2>
+          <div class='info-row'>
+            <span class='info-label'>Mã giao dịch:</span>
+            <span class='info-value'>{{vnp_TxnRef}}</span>
+          </div>
+          <div class='info-row'>
+            <span class='info-label'>Mã giao dịch VNPAY:</span>
+            <span class='info-value'>{{vnp_TransactionNo}}</span>
+          </div>
+          <div class='info-row'>
+            <span class='info-label'>Thời gian thanh toán:</span>
+            <span class='info-value'>{{vnp_PayDate}}</span>
+          </div>
+          <div class='info-row'>
+            <span class='info-label'>Phương thức:</span>
+            <span class='info-value'>{{vnp_CardType}} - {{vnp_BankCode}}</span>
+          </div>
+          <div class='info-row'>
+            <span class='info-label'>Trạng thái:</span>
+            <span class='info-value' style='color: #10b981;'>Thành công</span>
+          </div>
+        </div>
+
+        <!-- Total Amount -->
+        <div class='total-section'>
+          <div class='label'>Tổng thanh toán</div>
+          <div class='amount'>{{formattedAmount}} VNĐ</div>
+        </div>
+
+        <!-- Subscription Info -->
+        <div class='info-section'>
+          <h2>Thông Tin Gói VIP</h2>
+          <div class='info-row'>
+            <span class='info-label'>Tên gói:</span>
+            <span class='info-value'>{{planName}}</span>
+          </div>
+          <div class='info-row'>
+            <span class='info-label'>Ngày bắt đầu:</span>
+            <span class='info-value'>{{startDate}}</span>
+          </div>
+          <div class='info-row'>
+            <span class='info-label'>Ngày hết hạn:</span>
+            <span class='info-value'>{{endDate}}</span>
+          </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class='benefits'>
+          <h3>Quyền Lợi VIP Của Bạn:</h3>
+          <div class='benefit-item'>Xem phim không giới hạn, không quảng cáo</div>
+          <div class='benefit-item'>Chất lượng video Full HD và 4K</div>
+          <div class='benefit-item'>Tải phim offline để xem mọi lúc mọi nơi</div>
+          <div class='benefit-item'>Truy cập sớm các bộ phim mới nhất</div>
+          <div class='benefit-item'>Xem đồng thời trên nhiều thiết bị</div>
+          <div class='benefit-item'>Hỗ trợ khách hàng ưu tiên 24/7</div>
+        </div>
+
+        <div class='divider'></div>
+
+        <!-- CTA Button -->
+        <a href='{{websiteUrl}}' class='cta-button'>
+          Bắt Đầu Xem Phim Ngay
+        </a>
+
+        <p style='color: #6b7280; font-size: 14px; text-align: center; margin-top: 20px;'>
+          Nếu bạn có bất kỳ câu hỏi nào, vui lòng liên hệ với chúng tôi qua email
+          <a href='mailto:{{supportEmail}}' style='color: #667eea;'>{{supportEmail}}</a>
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div class='footer'>
+        <p><strong>{{companyName}}</strong></p>
+        <p>{{companyAddress}}</p>
+        <p>Email: {{supportEmail}} | Hotline: {{supportPhone}}</p>
+        <p style='margin-top: 15px; font-size: 12px;'>
+          © 2025
+          {{companyName}}. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
