@@ -17,7 +17,7 @@ export class VideoService {
     });
   }
 
-  async createDirectUpload(userId: number, metadata?: Record<string, string>) {
+  async createDirectUpload(userId: string, metadata?: Record<string, string>) {
     try {
       const upload = await this.mux.video.uploads.create({
         cors_origin: this.configService.get<string>('FRONTEND_ADMIN_URL') || '*',

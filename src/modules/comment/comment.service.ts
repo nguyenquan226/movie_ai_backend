@@ -306,7 +306,7 @@ export class CommentService {
     }
   }
 
-  private async deleteChildrenRecursive(commentId: string, userId: number) {
+  private async deleteChildrenRecursive(commentId: string, userId: string) {
     const children = await this.commentRepo.find({
       where: { parent: { commentId }, deletedAt: IsNull() },
       relations: ['children'],
@@ -506,11 +506,11 @@ export class CommentService {
     }
   }
 
-  async hideCommentAndChildren(commentId: string, userId: number) {
+  async hideCommentAndChildren(commentId: string, userId: string) {
     await this.toggleHideChildrenRecursive(commentId, true, userId);
   }
 
-  private async toggleHideChildrenRecursive(parentId: string, isHidden: boolean, userId: number) {
+  private async toggleHideChildrenRecursive(parentId: string, isHidden: boolean, userId: string) {
     const children = await this.commentRepo.find({
       where: { parent: { commentId: parentId } },
       relations: ['children'],

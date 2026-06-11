@@ -1,11 +1,10 @@
-import { IsNotEmpty, IsNumber, IsString, IsOptional, IsIn } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, IsOptional, IsIn, IsUUID } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CreateNotificationDto {
-  @IsNumber()
+  @IsUUID()
   @IsNotEmpty()
-  @Type(() => Number)
-  userId: number;
+  userId: string;
 
   @IsString()
   @IsNotEmpty()
@@ -25,9 +24,8 @@ export class CreateNotificationDto {
   message: string;
 
   @IsOptional()
-  @IsNumber()
-  @Type(() => Number)
-  replierId?: number;
+  @IsUUID()
+  replierId?: string;
 
   @IsOptional()
   result?: any;

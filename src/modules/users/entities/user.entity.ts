@@ -23,8 +23,8 @@ import { RoomCoWatching } from 'src/modules/co-watching/entities/co-watching.ent
 
 @Entity({ name: 'users' })
 export class User {
-  @PrimaryGeneratedColumn()
-  userId: number;
+  @PrimaryGeneratedColumn('uuid')
+  userId: string;
 
   @Column()
   email: string;
@@ -78,13 +78,13 @@ export class User {
   deletedAt: Date;
 
   @Column({ nullable: true })
-  createdBy: number;
+  createdBy?: string;
 
   @Column({ nullable: true })
-  updatedBy: number;
+  updatedBy?: string;
 
   @Column({ nullable: true })
-  deletedBy: number;
+  deletedBy?: string;
 
   @ManyToOne(() => AllCode, (allcode) => allcode.userGender)
   @JoinColumn({ name: 'gender_code', referencedColumnName: 'keyMap' })

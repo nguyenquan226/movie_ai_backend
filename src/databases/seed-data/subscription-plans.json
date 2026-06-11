@@ -1,0 +1,26 @@
+[
+  {
+    "planName": "Gói 1 Tháng VIP",
+    "planDuration": 1,
+    "durationTypeCode": "MONTH",
+    "price": "99000",
+    "isActive": true,
+    "createdBy": 1
+  },
+  {
+    "planName": "Gói 6 Tháng VIP",
+    "planDuration": 6,
+    "durationTypeCode": "MONTH",
+    "price": "499000",
+    "isActive": true,
+    "createdBy": 1
+  },
+  {
+    "planName": "Gói 1 Năm Premium",
+    "planDuration": 1,
+    "durationTypeCode": "YEAR",
+    "price": "899000",
+    "isActive": true,
+    "createdBy": 1
+  }
+]

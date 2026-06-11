@@ -21,7 +21,7 @@ export class PlaylistsService {
     private filmRepo: Repository<Film>,
   ) {}
 
-  async createPlaylist(userId: number, createDto: CreatePlaylistDto) {
+  async createPlaylist(userId: string, createDto: CreatePlaylistDto) {
     try {
       const isExist = await this.playlistRepo.exists({
         where: { playlistName: createDto.playlistName, userId: userId },
@@ -54,7 +54,7 @@ export class PlaylistsService {
     }
   }
 
-  async getUserAllPlaylists(userId: number) {
+  async getUserAllPlaylists(userId: string) {
     try {
       const playlists = await this.playlistRepo.find({
         where: { userId: userId },
@@ -136,7 +136,7 @@ export class PlaylistsService {
     }
   }
 
-  async addFilmToPlaylist(userId: number, dto: AddFilmToPlaylistDto) {
+  async addFilmToPlaylist(userId: string, dto: AddFilmToPlaylistDto) {
     try {
       const playlist = await this.playlistRepo.findOne({
         where: { playlistId: dto.playlistId, userId: userId },
@@ -196,7 +196,7 @@ export class PlaylistsService {
     }
   }
 
-  async deletePlaylist(userId: number, playlistId: string) {
+  async deletePlaylist(userId: string, playlistId: string) {
     try {
       const playlist = await this.playlistRepo.findOne({
         where: { userId: userId, playlistId: playlistId },
@@ -222,7 +222,7 @@ export class PlaylistsService {
     }
   }
 
-  async editPlaylist(userId: number, playlistId: string, dto: UpdatePlaylistDto) {
+  async editPlaylist(userId: string, playlistId: string, dto: UpdatePlaylistDto) {
     try {
       const playlist = await this.playlistRepo.findOne({
         where: { userId: userId, playlistId: playlistId },

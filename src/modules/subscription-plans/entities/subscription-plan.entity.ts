@@ -42,13 +42,13 @@ export class SubscriptionPlan {
   deletedAt?: Date;
 
   @Column({ nullable: true })
-  createdBy?: number;
+  createdBy?: string;
 
   @Column({ nullable: true })
-  updatedBy?: number;
+  updatedBy?: string;
 
   @Column({ nullable: true })
-  deletedBy?: number;
+  deletedBy?: string;
 
   @ManyToOne(() => AllCode, (allcode) => allcode.planDuration)
   @JoinColumn({ name: 'durationType_code', referencedColumnName: 'keyMap' })

@@ -72,7 +72,7 @@ export class UsersService {
     }
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     try {
       const userData = await this.usersRepository.findOne({
         where: { userId: id },
@@ -182,7 +182,7 @@ export class UsersService {
     }
   }
 
-  async remove(id: number, user: IUser) {
+  async remove(id: string, user: IUser) {
     try {
       const foundUser = await this.usersRepository.findOne({
         where: { userId: id },
@@ -276,7 +276,7 @@ export class UsersService {
     };
   }
 
-  async updateUserToken(refresh_token: string, id: number) {
+  async updateUserToken(refresh_token: string, id: string) {
     return await this.usersRepository.update({ userId: id }, { refreshToken: refresh_token });
   }
 

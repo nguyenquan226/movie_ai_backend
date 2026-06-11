@@ -291,7 +291,7 @@ export class ReportService {
     }
   }
 
-  async dismissReport(reportId: string, userId: number, note?: string) {
+  async dismissReport(reportId: string, userId: string, note?: string) {
     try {
       const report = await this.reportRepo.findOne({
         where: { reportId },

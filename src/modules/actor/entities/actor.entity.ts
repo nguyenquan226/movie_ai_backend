@@ -45,11 +45,11 @@ export class Actor {
   @DeleteDateColumn()
   deletedAt?: Date;
   @Column({ nullable: true })
-  createdBy: number;
+  createdBy?: string;
   @Column({ nullable: true })
-  updatedBy: number;
+  updatedBy?: string;
   @Column({ nullable: true })
-  deletedBy: number;
+  deletedBy?: string;
   @ManyToOne(() => AllCode, (allcode) => allcode.actorGender)
   @JoinColumn({ name: 'gender_code', referencedColumnName: 'keyMap' })
   genderActor: AllCode;

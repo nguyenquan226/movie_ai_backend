@@ -1,5 +1,5 @@
 export interface IPaymentUser {
-  userId: number;
+  userId: string;
   email: string;
   avatarUrl: string;
   fullName: string;
@@ -13,7 +13,7 @@ export interface IPaymentPlan {
 
 export interface IPayment {
   paymentId: string; // UUID
-  userId: number;
+  userId: string;
   planId: number;
   amount: string;
   status: string;

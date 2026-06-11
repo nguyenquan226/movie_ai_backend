@@ -33,12 +33,12 @@ export class SubscriptionsController {
   @Patch(':id')
   @Permission('Update a subscription by ID', 'SUBSCRIPTIONS')
   update(@Param('id') id: string, @Body() updateSubscriptionDto: UpdateSubscriptionDto) {
-    return this.subscriptionsService.update(+id, updateSubscriptionDto);
+    return this.subscriptionsService.update(id, updateSubscriptionDto);
   }
 
   @Delete(':id')
   @Permission('Delete a subscription by ID', 'SUBSCRIPTIONS')
   remove(@Param('id') id: string) {
-    return this.subscriptionsService.remove(+id);
+    return this.subscriptionsService.remove(id);
   }
 }

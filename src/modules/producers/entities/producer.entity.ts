@@ -30,13 +30,13 @@ export class Producer {
   deletedAt?: Date
 
   @Column({ nullable: true })
-  createdBy: number
+  createdBy?: string
 
   @Column({ nullable: true })
-  updatedBy: number
+  updatedBy?: string
 
   @Column({ nullable: true })
-  deletedBy: number
+  deletedBy?: string
 
   @OneToMany(() => FilmProducer,(filmProducer) => filmProducer.producer,)
   filmProducers: FilmProducer[]
