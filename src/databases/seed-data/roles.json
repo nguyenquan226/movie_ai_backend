@@ -1,0 +1,48 @@
+[
+  {
+    "roleId": 1,
+    "roleName": "ROLE_ADMIN",
+    "description": "Quản trị viên hệ thống (Full quyền)",
+    "isActive": true,
+    "createdBy": 1
+  },
+  {
+    "roleId": 2,
+    "roleName": "ROLE_MOD",
+    "description": "Người kiểm duyệt (Quản lý nội dung và tương tác)",
+    "isActive": true,
+    "createdBy": 1
+  },
+  {
+    "roleId": 3,
+    "roleName": "ROLE_USER",
+    "description": "Người dùng cơ bản",
+    "isActive": true,
+    "isDeleted": false,
+    "createdBy": 1
+  },
+  {
+    "roleId": 4,
+    "roleName": "ROLE_VIP",
+    "description": "Người dùng gói Premium/VIP",
+    "isActive": true,
+    "isDeleted": false,
+    "createdBy": 1
+  },
+  {
+    "roleId": 5,
+    "roleName": "ROLE_CONTENT_CREATOR",
+    "description": "Nhà sáng tạo nội dung (Quản lý phim/diễn viên)",
+    "isActive": true,
+    "isDeleted": false,
+    "createdBy": 1
+  },
+  {
+    "roleId": 6,
+    "roleName": "ROLE_SUPPORT",
+    "description": "Hỗ trợ khách hàng (Hỗ trợ tài khoản/bình luận)",
+    "isActive": true,
+    "isDeleted": false,
+    "createdBy": 1
+  }
+]

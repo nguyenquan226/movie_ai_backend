@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { DatabasesService } from './databases.service';
-import { DatabasesController } from './databases.controller';
 import { AllCodesService } from 'src/modules/all-codes/all-codes.service';
 import { AllCode } from 'src/modules/all-codes/entities/all-code.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -10,18 +9,27 @@ import { UsersService } from 'src/modules/users/users.service';
 import { DirectorService } from 'src/modules/directors/director.service';
 
 import { Director } from 'src/modules/directors/entities/director.entity';
-import { RolePermissionService } from 'src/modules/role_permission/role_permission.service';
 import { RolePermission } from 'src/modules/role_permission/entities/role_permission.entity';
-import { RolesService } from 'src/modules/roles/roles.service';
 import { Role } from 'src/modules/roles/entities/role.entity';
+import { SubscriptionPlan } from 'src/modules/subscription-plans/entities/subscription-plan.entity';
 import { SearchModule } from 'src/modules/search/search.module';
+import { RolesService } from 'src/modules/roles/roles.service';
+import { RolePermissionService } from 'src/modules/role_permission/role_permission.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([AllCode, User, Permission, Director, RolePermission, Role]),
+    TypeOrmModule.forFeature([
+      AllCode,
+      User,
+      Permission,
+      Director,
+      RolePermission,
+      Role,
+      SubscriptionPlan,
+    ]),
     SearchModule,
   ],
-  controllers: [DatabasesController],
+  controllers: [],
   providers: [
     DatabasesService,
     AllCodesService,

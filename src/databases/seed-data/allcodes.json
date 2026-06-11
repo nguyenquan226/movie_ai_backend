@@ -1,0 +1,1836 @@
+[
+  {
+    "keyMap": "C_ALL",
+    "type": "COUNTRY",
+    "valueEn": "All",
+    "valueVi": "Tất cả",
+    "description": "Tất cả quốc gia"
+  },
+  {
+    "keyMap": "C_VN",
+    "type": "COUNTRY",
+    "valueEn": "Vietnam",
+    "valueVi": "Việt Nam",
+    "description": "Quốc gia Việt Nam"
+  },
+  {
+    "keyMap": "C_US",
+    "type": "COUNTRY",
+    "valueEn": "USA",
+    "valueVi": "Mỹ",
+    "description": "Quốc gia Mỹ"
+  },
+  {
+    "keyMap": "C_KR",
+    "type": "COUNTRY",
+    "valueEn": "Korea",
+    "valueVi": "Hàn Quốc",
+    "description": "Quốc gia Hàn Quốc"
+  },
+  {
+    "keyMap": "C_CN",
+    "type": "COUNTRY",
+    "valueEn": "China",
+    "valueVi": "Trung Quốc",
+    "description": "Quốc gia Trung Quốc"
+  },
+  {
+    "keyMap": "C_JP",
+    "type": "COUNTRY",
+    "valueEn": "Japan",
+    "valueVi": "Nhật Bản",
+    "description": "Quốc gia Nhật Bản"
+  },
+  {
+    "keyMap": "C_HK",
+    "type": "COUNTRY",
+    "valueEn": "Hong Kong",
+    "valueVi": "Hồng Kông",
+    "description": "Quốc gia Hồng Kông"
+  },
+  {
+    "keyMap": "C_FR",
+    "type": "COUNTRY",
+    "valueEn": "France",
+    "valueVi": "Pháp",
+    "description": "Quốc gia Pháp"
+  },
+  {
+    "keyMap": "C_TH",
+    "type": "COUNTRY",
+    "valueEn": "Thailand",
+    "valueVi": "Thái Lan",
+    "description": "Quốc gia Thái Lan"
+  },
+  {
+    "keyMap": "C_UK",
+    "type": "COUNTRY",
+    "valueEn": "UK",
+    "valueVi": "Anh",
+    "description": "Quốc gia Anh"
+  },
+  {
+    "keyMap": "C_DE",
+    "type": "COUNTRY",
+    "valueEn": "Germany",
+    "valueVi": "Đức",
+    "description": "Quốc gia Đức"
+  },
+  {
+    "keyMap": "C_TW",
+    "type": "COUNTRY",
+    "valueEn": "Taiwan",
+    "valueVi": "Đài Loan",
+    "description": "Quốc gia Đài Loan"
+  },
+  {
+    "keyMap": "C_AU",
+    "type": "COUNTRY",
+    "valueEn": "Australia",
+    "valueVi": "Úc",
+    "description": "Quốc gia Úc"
+  },
+  {
+    "keyMap": "C_CA",
+    "type": "COUNTRY",
+    "valueEn": "Canada",
+    "valueVi": "Canada",
+    "description": "Quốc gia Canada"
+  },
+  {
+    "keyMap": "C_IN",
+    "type": "COUNTRY",
+    "valueEn": "India",
+    "valueVi": "Ấn Độ",
+    "description": "Quốc gia Ấn Độ"
+  },
+  {
+    "keyMap": "C_IT",
+    "type": "COUNTRY",
+    "valueEn": "Italy",
+    "valueVi": "Ý",
+    "description": "Quốc gia Ý"
+  },
+  {
+    "keyMap": "C_ES",
+    "type": "COUNTRY",
+    "valueEn": "Spain",
+    "valueVi": "Tây Ban Nha",
+    "description": "Quốc gia Tây Ban Nha"
+  },
+  {
+    "keyMap": "C_RU",
+    "type": "COUNTRY",
+    "valueEn": "Russia",
+    "valueVi": "Nga",
+    "description": "Quốc gia Nga"
+  },
+  {
+    "keyMap": "C_BR",
+    "type": "COUNTRY",
+    "valueEn": "Brazil",
+    "valueVi": "Brazil",
+    "description": "Quốc gia Brazil"
+  },
+  {
+    "keyMap": "C_AR",
+    "type": "COUNTRY",
+    "valueEn": "Argentina",
+    "valueVi": "Argentina",
+    "description": "Quốc gia Argentina"
+  },
+  {
+    "keyMap": "C_PH",
+    "type": "COUNTRY",
+    "valueEn": "Philippines",
+    "valueVi": "Philippines",
+    "description": "Quốc gia Philippines"
+  },
+  {
+    "keyMap": "C_ID",
+    "type": "COUNTRY",
+    "valueEn": "Indonesia",
+    "valueVi": "Indonesia",
+    "description": "Quốc gia Indonesia"
+  },
+  {
+    "keyMap": "C_MY",
+    "type": "COUNTRY",
+    "valueEn": "Malaysia",
+    "valueVi": "Malaysia",
+    "description": "Quốc gia Malaysia"
+  },
+  {
+    "keyMap": "C_SG",
+    "type": "COUNTRY",
+    "valueEn": "Singapore",
+    "valueVi": "Singapore",
+    "description": "Quốc gia Singapore"
+  },
+  {
+    "keyMap": "C_UA",
+    "type": "COUNTRY",
+    "valueEn": "Ukraine",
+    "valueVi": "Ukraina",
+    "description": "Quốc gia Ukraina"
+  },
+  {
+    "keyMap": "C_NZ",
+    "type": "COUNTRY",
+    "valueEn": "New Zealand",
+    "valueVi": "New Zealand",
+    "description": "Quốc gia New Zealand"
+  },
+  {
+    "keyMap": "C_SE",
+    "type": "COUNTRY",
+    "valueEn": "Sweden",
+    "valueVi": "Thụy Điển",
+    "description": "Quốc gia Thụy Điển"
+  },
+  {
+    "keyMap": "C_NO",
+    "type": "COUNTRY",
+    "valueEn": "Norway",
+    "valueVi": "Na Uy",
+    "description": "Quốc gia Na Uy"
+  },
+  {
+    "keyMap": "C_FI",
+    "type": "COUNTRY",
+    "valueEn": "Finland",
+    "valueVi": "Phần Lan",
+    "description": "Quốc gia Phần Lan"
+  },
+  {
+    "keyMap": "C_DK",
+    "type": "COUNTRY",
+    "valueEn": "Denmark",
+    "valueVi": "Đan Mạch",
+    "description": "Quốc gia Đan Mạch"
+  },
+  {
+    "keyMap": "C_CH",
+    "type": "COUNTRY",
+    "valueEn": "Switzerland",
+    "valueVi": "Thụy Sĩ",
+    "description": "Quốc gia Thụy Sĩ"
+  },
+  {
+    "keyMap": "C_NL",
+    "type": "COUNTRY",
+    "valueEn": "Netherlands",
+    "valueVi": "Hà Lan",
+    "description": "Quốc gia Hà Lan"
+  },
+  {
+    "keyMap": "C_PT",
+    "type": "COUNTRY",
+    "valueEn": "Portugal",
+    "valueVi": "Bồ Đào Nha",
+    "description": "Quốc gia Bồ Đào Nha"
+  },
+  {
+    "keyMap": "C_BE",
+    "type": "COUNTRY",
+    "valueEn": "Belgium",
+    "valueVi": "Bỉ",
+    "description": "Quốc gia Bỉ"
+  },
+  {
+    "keyMap": "C_AT",
+    "type": "COUNTRY",
+    "valueEn": "Austria",
+    "valueVi": "Áo",
+    "description": "Quốc gia Áo"
+  },
+  {
+    "keyMap": "C_IE",
+    "type": "COUNTRY",
+    "valueEn": "Ireland",
+    "valueVi": "Ireland",
+    "description": "Quốc gia Ireland"
+  },
+  {
+    "keyMap": "C_MX",
+    "type": "COUNTRY",
+    "valueEn": "Mexico",
+    "valueVi": "Mexico",
+    "description": "Quốc gia Mexico"
+  },
+  {
+    "keyMap": "C_SA",
+    "type": "COUNTRY",
+    "valueEn": "Saudi Arabia",
+    "valueVi": "Ả Rập Saudi",
+    "description": "Quốc gia Ả Rập Saudi"
+  },
+  {
+    "keyMap": "C_AE",
+    "type": "COUNTRY",
+    "valueEn": "UAE",
+    "valueVi": "UAE",
+    "description": "Quốc gia UAE"
+  },
+  {
+    "keyMap": "C_EG",
+    "type": "COUNTRY",
+    "valueEn": "Egypt",
+    "valueVi": "Ai Cập",
+    "description": "Quốc gia Ai Cập"
+  },
+  {
+    "keyMap": "C_TR",
+    "type": "COUNTRY",
+    "valueEn": "Turkey",
+    "valueVi": "Thổ Nhĩ Kỳ",
+    "description": "Quốc gia Thổ Nhĩ Kỳ"
+  },
+  {
+    "keyMap": "C_PK",
+    "type": "COUNTRY",
+    "valueEn": "Pakistan",
+    "valueVi": "Pakistan",
+    "description": "Quốc gia Pakistan"
+  },
+  {
+    "keyMap": "C_IR",
+    "type": "COUNTRY",
+    "valueEn": "Iran",
+    "valueVi": "Iran",
+    "description": "Quốc gia Iran"
+  },
+  {
+    "keyMap": "C_AF",
+    "type": "COUNTRY",
+    "valueEn": "Afghanistan",
+    "valueVi": "Afghanistan",
+    "description": "Quốc gia Afghanistan"
+  },
+  {
+    "keyMap": "C_AL",
+    "type": "COUNTRY",
+    "valueEn": "Albania",
+    "valueVi": "Albanbia",
+    "description": "Quốc gia Albania"
+  },
+  {
+    "keyMap": "C_DZ",
+    "type": "COUNTRY",
+    "valueEn": "Algeria",
+    "valueVi": "Algeria",
+    "description": "Quốc gia Algeria"
+  },
+  {
+    "keyMap": "C_AD",
+    "type": "COUNTRY",
+    "valueEn": "Andorra",
+    "valueVi": "Andorra",
+    "description": "Quốc gia Andorra"
+  },
+  {
+    "keyMap": "C_AO",
+    "type": "COUNTRY",
+    "valueEn": "Angola",
+    "valueVi": "Angola",
+    "description": "Quốc gia Angola"
+  },
+  {
+    "keyMap": "C_AG",
+    "type": "COUNTRY",
+    "valueEn": "Antigua and Barbuda",
+    "valueVi": "Antigua và Barbuda",
+    "description": "Quốc gia Antigua và Barbuda"
+  },
+  {
+    "keyMap": "C_AM",
+    "type": "COUNTRY",
+    "valueEn": "Armenia",
+    "valueVi": "Armenia",
+    "description": "Quốc gia Armenia"
+  },
+  {
+    "keyMap": "C_AZ",
+    "type": "COUNTRY",
+    "valueEn": "Azerbaijan",
+    "valueVi": "Azerbaijan",
+    "description": "Quốc gia Azerbaijan"
+  },
+  {
+    "keyMap": "C_BS",
+    "type": "COUNTRY",
+    "valueEn": "Bahamas",
+    "valueVi": "Bahamas",
+    "description": "Quốc gia Bahamas"
+  },
+  {
+    "keyMap": "C_BH",
+    "type": "COUNTRY",
+    "valueEn": "Bahrain",
+    "valueVi": "Bahrain",
+    "description": "Quốc gia Bahrain"
+  },
+  {
+    "keyMap": "C_BD",
+    "type": "COUNTRY",
+    "valueEn": "Bangladesh",
+    "valueVi": "Bangladesh",
+    "description": "Quốc gia Bangladesh"
+  },
+  {
+    "keyMap": "C_BB",
+    "type": "COUNTRY",
+    "valueEn": "Barbados",
+    "valueVi": "Barbados",
+    "description": "Quốc gia Barbados"
+  },
+  {
+    "keyMap": "C_BY",
+    "type": "COUNTRY",
+    "valueEn": "Belarus",
+    "valueVi": "Belarus",
+    "description": "Quốc gia Belarus"
+  },
+  {
+    "keyMap": "C_BZ",
+    "type": "COUNTRY",
+    "valueEn": "Belize",
+    "valueVi": "Belize",
+    "description": "Quốc gia Belize"
+  },
+  {
+    "keyMap": "C_BJ",
+    "type": "COUNTRY",
+    "valueEn": "Benin",
+    "valueVi": "Benin",
+    "description": "Quốc gia Benin"
+  },
+  {
+    "keyMap": "C_BT",
+    "type": "COUNTRY",
+    "valueEn": "Bhutan",
+    "valueVi": "Bhutan",
+    "description": "Quốc gia Bhutan"
+  },
+  {
+    "keyMap": "C_BO",
+    "type": "COUNTRY",
+    "valueEn": "Bolivia",
+    "valueVi": "Bolivia",
+    "description": "Quốc gia Bolivia"
+  },
+  {
+    "keyMap": "C_BA",
+    "type": "COUNTRY",
+    "valueEn": "Bosnia and Herzegovina",
+    "valueVi": "Bosnia và Herzegovina",
+    "description": "Quốc gia Bosnia và Herzegovina"
+  },
+  {
+    "keyMap": "C_BW",
+    "type": "COUNTRY",
+    "valueEn": "Botswana",
+    "valueVi": "Botswana",
+    "description": "Quốc gia Botswana"
+  },
+  {
+    "keyMap": "C_BN",
+    "type": "COUNTRY",
+    "valueEn": "Brunei",
+    "valueVi": "Brunei",
+    "description": "Quốc gia Brunei"
+  },
+  {
+    "keyMap": "C_BG",
+    "type": "COUNTRY",
+    "valueEn": "Bulgaria",
+    "valueVi": "Bulgaria",
+    "description": "Quốc gia Bulgaria"
+  },
+  {
+    "keyMap": "C_BF",
+    "type": "COUNTRY",
+    "valueEn": "Burkina Faso",
+    "valueVi": "Burkina Faso",
+    "description": "Quốc gia Burkina Faso"
+  },
+  {
+    "keyMap": "C_BI",
+    "type": "COUNTRY",
+    "valueEn": "Burundi",
+    "valueVi": "Burundi",
+    "description": "Quốc gia Burundi"
+  },
+  {
+    "keyMap": "C_CV",
+    "type": "COUNTRY",
+    "valueEn": "Cabo Verde",
+    "valueVi": "Cabo Verde",
+    "description": "Quốc gia Cabo Verde"
+  },
+  {
+    "keyMap": "C_KH",
+    "type": "COUNTRY",
+    "valueEn": "Cambodia",
+    "valueVi": "Campuchia",
+    "description": "Quốc gia Campuchia"
+  },
+  {
+    "keyMap": "C_CM",
+    "type": "COUNTRY",
+    "valueEn": "Cameroon",
+    "valueVi": "Cameroon",
+    "description": "Quốc gia Cameroon"
+  },
+  {
+    "keyMap": "C_CF",
+    "type": "COUNTRY",
+    "valueEn": "Central African Republic",
+    "valueVi": "Cộng hòa Trung Phi",
+    "description": "Quốc gia Cộng hòa Trung Phi"
+  },
+  {
+    "keyMap": "C_TD",
+    "type": "COUNTRY",
+    "valueEn": "Chad",
+    "valueVi": "Tchad",
+    "description": "Quốc gia Tchad"
+  },
+  {
+    "keyMap": "C_CL",
+    "type": "COUNTRY",
+    "valueEn": "Chile",
+    "valueVi": "Chile",
+    "description": "Quốc gia Chile"
+  },
+  {
+    "keyMap": "C_CO",
+    "type": "COUNTRY",
+    "valueEn": "Colombia",
+    "valueVi": "Colombia",
+    "description": "Quốc gia Colombia"
+  },
+  {
+    "keyMap": "C_KM",
+    "type": "COUNTRY",
+    "valueEn": "Comoros",
+    "valueVi": "Comoros",
+    "description": "Quốc gia Comoros"
+  },
+  {
+    "keyMap": "C_CG",
+    "type": "COUNTRY",
+    "valueEn": "Congo",
+    "valueVi": "Congo",
+    "description": "Quốc gia Congo"
+  },
+  {
+    "keyMap": "C_CD",
+    "type": "COUNTRY",
+    "valueEn": "Congo (DRC)",
+    "valueVi": "Congo (DRC)",
+    "description": "Quốc gia Congo (DRC)"
+  },
+  {
+    "keyMap": "C_CR",
+    "type": "COUNTRY",
+    "valueEn": "Costa Rica",
+    "valueVi": "Costa Rica",
+    "description": "Quốc gia Costa Rica"
+  },
+  {
+    "keyMap": "C_CI",
+    "type": "COUNTRY",
+    "valueEn": "Côte d’Ivoire",
+    "valueVi": "Bờ Biển Ngà",
+    "description": "Quốc gia Bờ Biển Ngà"
+  },
+  {
+    "keyMap": "C_HR",
+    "type": "COUNTRY",
+    "valueEn": "Croatia",
+    "valueVi": "Croatia",
+    "description": "Quốc gia Croatia"
+  },
+  {
+    "keyMap": "C_CU",
+    "type": "COUNTRY",
+    "valueEn": "Cuba",
+    "valueVi": "Cuba",
+    "description": "Quốc gia Cuba"
+  },
+  {
+    "keyMap": "C_CY",
+    "type": "COUNTRY",
+    "valueEn": "Cyprus",
+    "valueVi": "Síp",
+    "description": "Quốc gia Síp"
+  },
+  {
+    "keyMap": "C_CZ",
+    "type": "COUNTRY",
+    "valueEn": "Czech Republic",
+    "valueVi": "Séc",
+    "description": "Quốc gia Séc"
+  },
+  {
+    "keyMap": "C_DJ",
+    "type": "COUNTRY",
+    "valueEn": "Djibouti",
+    "valueVi": "Djibouti",
+    "description": "Quốc gia Djibouti"
+  },
+  {
+    "keyMap": "C_DM",
+    "type": "COUNTRY",
+    "valueEn": "Dominica",
+    "valueVi": "Dominica",
+    "description": "Quốc gia Dominica"
+  },
+  {
+    "keyMap": "C_DO",
+    "type": "COUNTRY",
+    "valueEn": "Dominican Republic",
+    "valueVi": "Cộng hòa Dominica",
+    "description": "Quốc gia Cộng hòa Dominica"
+  },
+  {
+    "keyMap": "C_EC",
+    "type": "COUNTRY",
+    "valueEn": "Ecuador",
+    "valueVi": "Ecuador",
+    "description": "Quốc gia Ecuador"
+  },
+  {
+    "keyMap": "C_SV",
+    "type": "COUNTRY",
+    "valueEn": "El Salvador",
+    "valueVi": "El Salvador",
+    "description": "Quốc gia El Salvador"
+  },
+  {
+    "keyMap": "C_GQ",
+    "type": "COUNTRY",
+    "valueEn": "Equatorial Guinea",
+    "valueVi": "Guinea Xích Đạo",
+    "description": "Quốc gia Guinea Xích Đạo"
+  },
+  {
+    "keyMap": "C_ER",
+    "type": "COUNTRY",
+    "valueEn": "Eritrea",
+    "valueVi": "Eritrea",
+    "description": "Quốc gia Eritrea"
+  },
+  {
+    "keyMap": "C_EE",
+    "type": "COUNTRY",
+    "valueEn": "Estonia",
+    "valueVi": "Estonia",
+    "description": "Quốc gia Estonia"
+  },
+  {
+    "keyMap": "C_SZ",
+    "type": "COUNTRY",
+    "valueEn": "Eswatini",
+    "valueVi": "Eswatini",
+    "description": "Quốc gia Eswatini"
+  },
+  {
+    "keyMap": "C_ET",
+    "type": "COUNTRY",
+    "valueEn": "Ethiopia",
+    "valueVi": "Ethiopia",
+    "description": "Quốc gia Ethiopia"
+  },
+  {
+    "keyMap": "C_FJ",
+    "type": "COUNTRY",
+    "valueEn": "Fiji",
+    "valueVi": "Fiji",
+    "description": "Quốc gia Fiji"
+  },
+  {
+    "keyMap": "C_GM",
+    "type": "COUNTRY",
+    "valueEn": "Gambia",
+    "valueVi": "Gambia",
+    "description": "Quốc gia Gambia"
+  },
+  {
+    "keyMap": "C_GE",
+    "type": "COUNTRY",
+    "valueEn": "Georgia",
+    "valueVi": "Georgia",
+    "description": "Quốc gia Georgia"
+  },
+  {
+    "keyMap": "C_GH",
+    "type": "COUNTRY",
+    "valueEn": "Ghana",
+    "valueVi": "Ghana",
+    "description": "Quốc gia Ghana"
+  },
+  {
+    "keyMap": "C_GR",
+    "type": "COUNTRY",
+    "valueEn": "Greece",
+    "valueVi": "Hy Lạp",
+    "description": "Quốc gia Hy Lạp"
+  },
+  {
+    "keyMap": "C_GD",
+    "type": "COUNTRY",
+    "valueEn": "Grenada",
+    "valueVi": "Grenada",
+    "description": "Quốc gia Grenada"
+  },
+  {
+    "keyMap": "C_GT",
+    "type": "COUNTRY",
+    "valueEn": "Guatemala",
+    "valueVi": "Guatemala",
+    "description": "Quốc gia Guatemala"
+  },
+  {
+    "keyMap": "C_GN",
+    "type": "COUNTRY",
+    "valueEn": "Guinea",
+    "valueVi": "Guinea",
+    "description": "Quốc gia Guinea"
+  },
+  {
+    "keyMap": "C_GW",
+    "type": "COUNTRY",
+    "valueEn": "Guinea-Bissau",
+    "valueVi": "Guinea-Bissau",
+    "description": "Quốc gia Guinea-Bissau"
+  },
+  {
+    "keyMap": "C_GY",
+    "type": "COUNTRY",
+    "valueEn": "Guyana",
+    "valueVi": "Guyana",
+    "description": "Quốc gia Guyana"
+  },
+  {
+    "keyMap": "C_HT",
+    "type": "COUNTRY",
+    "valueEn": "Haiti",
+    "valueVi": "Haiti",
+    "description": "Quốc gia Haiti"
+  },
+  {
+    "keyMap": "C_HN",
+    "type": "COUNTRY",
+    "valueEn": "Honduras",
+    "valueVi": "Honduras",
+    "description": "Quốc gia Honduras"
+  },
+  {
+    "keyMap": "C_HU",
+    "type": "COUNTRY",
+    "valueEn": "Hungary",
+    "valueVi": "Hungary",
+    "description": "Quốc gia Hungary"
+  },
+  {
+    "keyMap": "C_IS",
+    "type": "COUNTRY",
+    "valueEn": "Iceland",
+    "valueVi": "Iceland",
+    "description": "Quốc gia Iceland"
+  },
+  {
+    "keyMap": "C_IQ",
+    "type": "COUNTRY",
+    "valueEn": "Iraq",
+    "valueVi": "Iraq",
+    "description": "Quốc gia Iraq"
+  },
+  {
+    "keyMap": "C_IL",
+    "type": "COUNTRY",
+    "valueEn": "Israel",
+    "valueVi": "Israel",
+    "description": "Quốc gia Israel"
+  },
+  {
+    "keyMap": "C_JO",
+    "type": "COUNTRY",
+    "valueEn": "Jordan",
+    "valueVi": "Jordan",
+    "description": "Quốc gia Jordan"
+  },
+  {
+    "keyMap": "C_KE",
+    "type": "COUNTRY",
+    "valueEn": "Kenya",
+    "valueVi": "Kenya",
+    "description": "Quốc gia Kenya"
+  },
+  {
+    "keyMap": "C_KI",
+    "type": "COUNTRY",
+    "valueEn": "Kiribati",
+    "valueVi": "Kiribati",
+    "description": "Quốc gia Kiribati"
+  },
+  {
+    "keyMap": "C_KW",
+    "type": "COUNTRY",
+    "valueEn": "Kuwait",
+    "valueVi": "Kuwait",
+    "description": "Quốc gia Kuwait"
+  },
+  {
+    "keyMap": "C_KG",
+    "type": "COUNTRY",
+    "valueEn": "Kyrgyzstan",
+    "valueVi": "Kyrgyzstan",
+    "description": "Quốc gia Kyrgyzstan"
+  },
+  {
+    "keyMap": "C_LA",
+    "type": "COUNTRY",
+    "valueEn": "Laos",
+    "valueVi": "Lào",
+    "description": "Quốc gia Lào"
+  },
+  {
+    "keyMap": "C_LV",
+    "type": "COUNTRY",
+    "valueEn": "Latvia",
+    "valueVi": "Latvia",
+    "description": "Quốc gia Latvia"
+  },
+  {
+    "keyMap": "C_LB",
+    "type": "COUNTRY",
+    "valueEn": "Lebanon",
+    "valueVi": "Lebanon",
+    "description": "Quốc gia Lebanon"
+  },
+  {
+    "keyMap": "C_LS",
+    "type": "COUNTRY",
+    "valueEn": "Lesotho",
+    "valueVi": "Lesotho",
+    "description": "Quốc gia Lesotho"
+  },
+  {
+    "keyMap": "C_LR",
+    "type": "COUNTRY",
+    "valueEn": "Liberia",
+    "valueVi": "Liberia",
+    "description": "Quốc gia Liberia"
+  },
+  {
+    "keyMap": "C_LY",
+    "type": "COUNTRY",
+    "valueEn": "Libya",
+    "valueVi": "Libya",
+    "description": "Quốc gia Libya"
+  },
+  {
+    "keyMap": "C_LI",
+    "type": "COUNTRY",
+    "valueEn": "Liechtenstein",
+    "valueVi": "Liechtenstein",
+    "description": "Quốc gia Liechtenstein"
+  },
+  {
+    "keyMap": "C_LT",
+    "type": "COUNTRY",
+    "valueEn": "Lithuania",
+    "valueVi": "Litva",
+    "description": "Quốc gia Litva"
+  },
+  {
+    "keyMap": "C_LU",
+    "type": "COUNTRY",
+    "valueEn": "Luxembourg",
+    "valueVi": "Luxembourg",
+    "description": "Quốc gia Luxembourg"
+  },
+  {
+    "keyMap": "C_MG",
+    "type": "COUNTRY",
+    "valueEn": "Madagascar",
+    "valueVi": "Madagascar",
+    "description": "Quốc gia Madagascar"
+  },
+  {
+    "keyMap": "C_MW",
+    "type": "COUNTRY",
+    "valueEn": "Malawi",
+    "valueVi": "Malawi",
+    "description": "Quốc gia Malawi"
+  },
+  {
+    "keyMap": "C_MV",
+    "type": "COUNTRY",
+    "valueEn": "Maldives",
+    "valueVi": "Maldives",
+    "description": "Quốc gia Maldives"
+  },
+  {
+    "keyMap": "C_ML",
+    "type": "COUNTRY",
+    "valueEn": "Mali",
+    "valueVi": "Mali",
+    "description": "Quốc gia Mali"
+  },
+  {
+    "keyMap": "C_MT",
+    "type": "COUNTRY",
+    "valueEn": "Malta",
+    "valueVi": "Malta",
+    "description": "Quốc gia Malta"
+  },
+  {
+    "keyMap": "C_MH",
+    "type": "COUNTRY",
+    "valueEn": "Marshall Islands",
+    "valueVi": "Quần đảo Marshall",
+    "description": "Quốc gia Quần đảo Marshall"
+  },
+  {
+    "keyMap": "C_MR",
+    "type": "COUNTRY",
+    "valueEn": "Mauritania",
+    "valueVi": "Mauritania",
+    "description": "Quốc gia Mauritania"
+  },
+  {
+    "keyMap": "C_MU",
+    "type": "COUNTRY",
+    "valueEn": "Mauritius",
+    "valueVi": "Mauritius",
+    "description": "Quốc gia Mauritius"
+  },
+  {
+    "keyMap": "C_MX2",
+    "type": "COUNTRY",
+    "valueEn": "Micronesia",
+    "valueVi": "Micronesia",
+    "description": "Quốc gia Micronesia"
+  },
+  {
+    "keyMap": "C_MD",
+    "type": "COUNTRY",
+    "valueEn": "Moldova",
+    "valueVi": "Moldova",
+    "description": "Quốc gia Moldova"
+  },
+  {
+    "keyMap": "C_MC",
+    "type": "COUNTRY",
+    "valueEn": "Monaco",
+    "valueVi": "Monaco",
+    "description": "Quốc gia Monaco"
+  },
+  {
+    "keyMap": "C_MN",
+    "type": "COUNTRY",
+    "valueEn": "Mongolia",
+    "valueVi": "Mông Cổ",
+    "description": "Quốc gia Mông Cổ"
+  },
+  {
+    "keyMap": "C_ME",
+    "type": "COUNTRY",
+    "valueEn": "Montenegro",
+    "valueVi": "Montenegro",
+    "description": "Quốc gia Montenegro"
+  },
+  {
+    "keyMap": "C_MA",
+    "type": "COUNTRY",
+    "valueEn": "Morocco",
+    "valueVi": "Ma Rốc",
+    "description": "Quốc gia Ma Rốc"
+  },
+  {
+    "keyMap": "C_MZ",
+    "type": "COUNTRY",
+    "valueEn": "Mozambique",
+    "valueVi": "Mozambique",
+    "description": "Quốc gia Mozambique"
+  },
+  {
+    "keyMap": "C_MM",
+    "type": "COUNTRY",
+    "valueEn": "Myanmar",
+    "valueVi": "Myanmar",
+    "description": "Quốc gia Myanmar"
+  },
+  {
+    "keyMap": "C_NA",
+    "type": "COUNTRY",
+    "valueEn": "Namibia",
+    "valueVi": "Namibia",
+    "description": "Quốc gia Namibia"
+  },
+  {
+    "keyMap": "C_NR",
+    "type": "COUNTRY",
+    "valueEn": "Nauru",
+    "valueVi": "Nauru",
+    "description": "Quốc gia Nauru"
+  },
+  {
+    "keyMap": "C_NP",
+    "type": "COUNTRY",
+    "valueEn": "Nepal",
+    "valueVi": "Nepal",
+    "description": "Quốc gia Nepal"
+  },
+  {
+    "keyMap": "C_NI",
+    "type": "COUNTRY",
+    "valueEn": "Nicaragua",
+    "valueVi": "Nicaragua",
+    "description": "Quốc gia Nicaragua"
+  },
+  {
+    "keyMap": "C_NE",
+    "type": "COUNTRY",
+    "valueEn": "Niger",
+    "valueVi": "Niger",
+    "description": "Quốc gia Niger"
+  },
+  {
+    "keyMap": "C_NG",
+    "type": "COUNTRY",
+    "valueEn": "Nigeria",
+    "valueVi": "Nigeria",
+    "description": "Quốc gia Nigeria"
+  },
+  {
+    "keyMap": "C_KP",
+    "type": "COUNTRY",
+    "valueEn": "North Korea",
+    "valueVi": "Triều Tiên",
+    "description": "Quốc gia Triều Tiên"
+  },
+  {
+    "keyMap": "C_MK",
+    "type": "COUNTRY",
+    "valueEn": "North Macedonia",
+    "valueVi": "Bắc Macedonia",
+    "description": "Quốc gia Bắc Macedonia"
+  },
+  {
+    "keyMap": "C_OM",
+    "type": "COUNTRY",
+    "valueEn": "Oman",
+    "valueVi": "Oman",
+    "description": "Quốc gia Oman"
+  },
+  {
+    "keyMap": "C_PA",
+    "type": "COUNTRY",
+    "valueEn": "Panama",
+    "valueVi": "Panama",
+    "description": "Quốc gia Panama"
+  },
+  {
+    "keyMap": "C_PG",
+    "type": "COUNTRY",
+    "valueEn": "Papua New Guinea",
+    "valueVi": "Papua New Guinea",
+    "description": "Quốc gia Papua New Guinea"
+  },
+  {
+    "keyMap": "C_PY",
+    "type": "COUNTRY",
+    "valueEn": "Paraguay",
+    "valueVi": "Paraguay",
+    "description": "Quốc gia Paraguay"
+  },
+  {
+    "keyMap": "C_PE",
+    "type": "COUNTRY",
+    "valueEn": "Peru",
+    "valueVi": "Peru",
+    "description": "Quốc gia Peru"
+  },
+  {
+    "keyMap": "C_PL",
+    "type": "COUNTRY",
+    "valueEn": "Poland",
+    "valueVi": "Ba Lan",
+    "description": "Quốc gia Ba Lan"
+  },
+  {
+    "keyMap": "C_QA",
+    "type": "COUNTRY",
+    "valueEn": "Qatar",
+    "valueVi": "Qatar",
+    "description": "Quốc gia Qatar"
+  },
+  {
+    "keyMap": "C_RO",
+    "type": "COUNTRY",
+    "valueEn": "Romania",
+    "valueVi": "Romania",
+    "description": "Quốc gia Romania"
+  },
+  {
+    "keyMap": "C_RW",
+    "type": "COUNTRY",
+    "valueEn": "Rwanda",
+    "valueVi": "Rwanda",
+    "description": "Quốc gia Rwanda"
+  },
+  {
+    "keyMap": "C_KN",
+    "type": "COUNTRY",
+    "valueEn": "Saint Kitts and Nevis",
+    "valueVi": "Saint Kitts và Nevis",
+    "description": "Quốc gia Saint Kitts và Nevis"
+  },
+  {
+    "keyMap": "C_LC",
+    "type": "COUNTRY",
+    "valueEn": "Saint Lucia",
+    "valueVi": "Saint Lucia",
+    "description": "Quốc gia Saint Lucia"
+  },
+  {
+    "keyMap": "C_VC",
+    "type": "COUNTRY",
+    "valueEn": "Saint Vincent and the Grenadines",
+    "valueVi": "Saint Vincent và Grenadines",
+    "description": "Quốc gia Saint Vincent và Grenadines"
+  },
+  {
+    "keyMap": "C_WS",
+    "type": "COUNTRY",
+    "valueEn": "Samoa",
+    "valueVi": "Samoa",
+    "description": "Quốc gia Samoa"
+  },
+  {
+    "keyMap": "C_SM",
+    "type": "COUNTRY",
+    "valueEn": "San Marino",
+    "valueVi": "San Marino",
+    "description": "Quốc gia San Marino"
+  },
+  {
+    "keyMap": "C_ST",
+    "type": "COUNTRY",
+    "valueEn": "São Tomé and Príncipe",
+    "valueVi": "São Tomé và Príncipe",
+    "description": "Quốc gia São Tomé và Príncipe"
+  },
+  {
+    "keyMap": "C_SN",
+    "type": "COUNTRY",
+    "valueEn": "Senegal",
+    "valueVi": "Senegal",
+    "description": "Quốc gia Senegal"
+  },
+  {
+    "keyMap": "C_RS",
+    "type": "COUNTRY",
+    "valueEn": "Serbia",
+    "valueVi": "Serbia",
+    "description": "Quốc gia Serbia"
+  },
+  {
+    "keyMap": "C_SC",
+    "type": "COUNTRY",
+    "valueEn": "Seychelles",
+    "valueVi": "Seychelles",
+    "description": "Quốc gia Seychelles"
+  },
+  {
+    "keyMap": "C_SL",
+    "type": "COUNTRY",
+    "valueEn": "Sierra Leone",
+    "valueVi": "Sierra Leone",
+    "description": "Quốc gia Sierra Leone"
+  },
+  {
+    "keyMap": "C_SK",
+    "type": "COUNTRY",
+    "valueEn": "Slovakia",
+    "valueVi": "Slovakia",
+    "description": "Quốc gia Slovakia"
+  },
+  {
+    "keyMap": "C_SI",
+    "type": "COUNTRY",
+    "valueEn": "Slovenia",
+    "valueVi": "Slovenia",
+    "description": "Quốc gia Slovenia"
+  },
+  {
+    "keyMap": "C_SB",
+    "type": "COUNTRY",
+    "valueEn": "Solomon Islands",
+    "valueVi": "Quần đảo Solomon",
+    "description": "Quốc gia Quần đảo Solomon"
+  },
+  {
+    "keyMap": "C_SO",
+    "type": "COUNTRY",
+    "valueEn": "Somalia",
+    "valueVi": "Somalia",
+    "description": "Quốc gia Somalia"
+  },
+  {
+    "keyMap": "C_ZA",
+    "type": "COUNTRY",
+    "valueEn": "South Africa",
+    "valueVi": "Nam Phi",
+    "description": "Quốc gia Nam Phi"
+  },
+  {
+    "keyMap": "C_SS",
+    "type": "COUNTRY",
+    "valueEn": "South Sudan",
+    "valueVi": "Nam Sudan",
+    "description": "Quốc gia Nam Sudan"
+  },
+  {
+    "keyMap": "C_SD",
+    "type": "COUNTRY",
+    "valueEn": "Sudan",
+    "valueVi": "Sudan",
+    "description": "Quốc gia Sudan"
+  },
+  {
+    "keyMap": "C_SR",
+    "type": "COUNTRY",
+    "valueEn": "Suriname",
+    "valueVi": "Suriname",
+    "description": "Quốc gia Suriname"
+  },
+  {
+    "keyMap": "C_SZ2",
+    "type": "COUNTRY",
+    "valueEn": "Swaziland",
+    "valueVi": "Swaziland",
+    "description": "Quốc gia Swaziland"
+  },
+  {
+    "keyMap": "C_SY",
+    "type": "COUNTRY",
+    "valueEn": "Syria",
+    "valueVi": "Syria",
+    "description": "Quốc gia Syria"
+  },
+  {
+    "keyMap": "C_TJ",
+    "type": "COUNTRY",
+    "valueEn": "Tajikistan",
+    "valueVi": "Tajikistan",
+    "description": "Quốc gia Tajikistan"
+  },
+  {
+    "keyMap": "C_TZ",
+    "type": "COUNTRY",
+    "valueEn": "Tanzania",
+    "valueVi": "Tanzania",
+    "description": "Quốc gia Tanzania"
+  },
+  {
+    "keyMap": "C_TG",
+    "type": "COUNTRY",
+    "valueEn": "Togo",
+    "valueVi": "Togo",
+    "description": "Quốc gia Togo"
+  },
+  {
+    "keyMap": "C_TO",
+    "type": "COUNTRY",
+    "valueEn": "Tonga",
+    "valueVi": "Tonga",
+    "description": "Quốc gia Tonga"
+  },
+  {
+    "keyMap": "C_TT",
+    "type": "COUNTRY",
+    "valueEn": "Trinidad and Tobago",
+    "valueVi": "Trinidad và Tobago",
+    "description": "Quốc gia Trinidad và Tobago"
+  },
+  {
+    "keyMap": "C_TN",
+    "type": "COUNTRY",
+    "valueEn": "Tunisia",
+    "valueVi": "Tunisia",
+    "description": "Quốc gia Tunisia"
+  },
+  {
+    "keyMap": "C_TM",
+    "type": "COUNTRY",
+    "valueEn": "Turkmenistan",
+    "valueVi": "Turkmenistan",
+    "description": "Quốc gia Turkmenistan"
+  },
+  {
+    "keyMap": "C_TV",
+    "type": "COUNTRY",
+    "valueEn": "Tuvalu",
+    "valueVi": "Tuvalu",
+    "description": "Quốc gia Tuvalu"
+  },
+  {
+    "keyMap": "C_UG",
+    "type": "COUNTRY",
+    "valueEn": "Uganda",
+    "valueVi": "Uganda",
+    "description": "Quốc gia Uganda"
+  },
+  {
+    "keyMap": "C_UY",
+    "type": "COUNTRY",
+    "valueEn": "Uruguay",
+    "valueVi": "Uruguay",
+    "description": "Quốc gia Uruguay"
+  },
+  {
+    "keyMap": "C_UZ",
+    "type": "COUNTRY",
+    "valueEn": "Uzbekistan",
+    "valueVi": "Uzbekistan",
+    "description": "Quốc gia Uzbekistan"
+  },
+  {
+    "keyMap": "C_VU",
+    "type": "COUNTRY",
+    "valueEn": "Vanuatu",
+    "valueVi": "Vanuatu",
+    "description": "Quốc gia Vanuatu"
+  },
+  {
+    "keyMap": "C_VE",
+    "type": "COUNTRY",
+    "valueEn": "Venezuela",
+    "valueVi": "Venezuela",
+    "description": "Quốc gia Venezuela"
+  },
+  {
+    "keyMap": "C_YE",
+    "type": "COUNTRY",
+    "valueEn": "Yemen",
+    "valueVi": "Yemen",
+    "description": "Quốc gia Yemen"
+  },
+  {
+    "keyMap": "C_ZM",
+    "type": "COUNTRY",
+    "valueEn": "Zambia",
+    "valueVi": "Zambia",
+    "description": "Quốc gia Zambia"
+  },
+  {
+    "keyMap": "C_ZW",
+    "type": "COUNTRY",
+    "valueEn": "Zimbabwe",
+    "valueVi": "Zimbabwe",
+    "description": "Quốc gia Zimbabwe"
+  },
+  {
+    "keyMap": "FT_ALL",
+    "type": "FILM_TYPE",
+    "valueEn": "All",
+    "valueVi": "Tất cả",
+    "description": "Tất cả loại phim"
+  },
+  {
+    "keyMap": "FT_SINGLE",
+    "type": "FILM_TYPE",
+    "valueEn": "Single",
+    "valueVi": "Phim lẻ",
+    "description": "Phim lẻ"
+  },
+  {
+    "keyMap": "FT_SERIES",
+    "type": "FILM_TYPE",
+    "valueEn": "Series",
+    "valueVi": "Phim bộ",
+    "description": "Phim bộ"
+  },
+  {
+    "keyMap": "R_ALL",
+    "type": "RANK",
+    "valueEn": "All",
+    "valueVi": "Tất cả",
+    "description": "Tất cả độ tuổi"
+  },
+  {
+    "keyMap": "R_P",
+    "type": "RANK",
+    "valueEn": "P",
+    "valueVi": "Mọi lứa tuổi",
+    "description": "Phim cho mọi lứa tuổi"
+  },
+  {
+    "keyMap": "R_K",
+    "type": "RANK",
+    "valueEn": "K",
+    "valueVi": "Dưới 13 tuổi",
+    "description": "Khán giả dưới 13 tuổi"
+  },
+  {
+    "keyMap": "R_T13",
+    "type": "RANK",
+    "valueEn": "T13",
+    "valueVi": "13 tuổi trở lên",
+    "description": "Khán giả từ 13+"
+  },
+  {
+    "keyMap": "R_T16",
+    "type": "RANK",
+    "valueEn": "T16",
+    "valueVi": "16 tuổi trở lên",
+    "description": "Khán giả từ 16+"
+  },
+  {
+    "keyMap": "R_T18",
+    "type": "RANK",
+    "valueEn": "T18",
+    "valueVi": "18 tuổi trở lên",
+    "description": "Khán giả từ 18+"
+  },
+  {
+    "keyMap": "G_ALL",
+    "type": "GENRE",
+    "valueEn": "All",
+    "valueVi": "Tất cả",
+    "description": "Tất cả thể loại"
+  },
+  {
+    "keyMap": "G_ANIME",
+    "type": "GENRE",
+    "valueEn": "Anime",
+    "valueVi": "Anime",
+    "description": "Phim Anime"
+  },
+  {
+    "keyMap": "G_ACTION",
+    "type": "GENRE",
+    "valueEn": "Action",
+    "valueVi": "Hành Động",
+    "description": "Phim hành động"
+  },
+  {
+    "keyMap": "G_COMEDY",
+    "type": "GENRE",
+    "valueEn": "Comedy",
+    "valueVi": "Hài",
+    "description": "Phim hài"
+  },
+  {
+    "keyMap": "G_ROMANCE",
+    "type": "GENRE",
+    "valueEn": "Romance",
+    "valueVi": "Tình Cảm",
+    "description": "Phim tình cảm"
+  },
+  {
+    "keyMap": "G_HORROR",
+    "type": "GENRE",
+    "valueEn": "Horror",
+    "valueVi": "Kinh Dị",
+    "description": "Phim kinh dị"
+  },
+  {
+    "keyMap": "G_SCIFI",
+    "type": "GENRE",
+    "valueEn": "Sci-Fi",
+    "valueVi": "Khoa Học Viễn Tưởng",
+    "description": "Phim khoa học viễn tưởng"
+  },
+  {
+    "keyMap": "G_FANTASY",
+    "type": "GENRE",
+    "valueEn": "Fantasy",
+    "valueVi": "Kỳ Ảo",
+    "description": "Phim kỳ ảo"
+  },
+  {
+    "keyMap": "G_HISTORY",
+    "type": "GENRE",
+    "valueEn": "History",
+    "valueVi": "Lịch Sử",
+    "description": "Phim lịch sử"
+  },
+  {
+    "keyMap": "G_WAR",
+    "type": "GENRE",
+    "valueEn": "War",
+    "valueVi": "Chiến Tranh",
+    "description": "Phim chiến tranh"
+  },
+  {
+    "keyMap": "G_DOC",
+    "type": "GENRE",
+    "valueEn": "Documentary",
+    "valueVi": "Tài Liệu",
+    "description": "Phim tài liệu"
+  },
+  {
+    "keyMap": "G_FAMILY",
+    "type": "GENRE",
+    "valueEn": "Family",
+    "valueVi": "Gia Đình",
+    "description": "Phim gia đình"
+  },
+  {
+    "keyMap": "G_THRILLER",
+    "type": "GENRE",
+    "valueEn": "Thriller",
+    "valueVi": "Gay Cấn",
+    "description": "Phim gay cấn"
+  },
+  {
+    "keyMap": "G_MUSICAL",
+    "type": "GENRE",
+    "valueEn": "Musical",
+    "valueVi": "Nhạc Kịch",
+    "description": "Phim nhạc kịch"
+  },
+  {
+    "keyMap": "G_SPORT",
+    "type": "GENRE",
+    "valueEn": "Sport",
+    "valueVi": "Thể Thao",
+    "description": "Phim thể thao"
+  },
+  {
+    "keyMap": "G_DETECTIVE",
+    "type": "GENRE",
+    "valueEn": "Detective",
+    "valueVi": "Trinh Thám",
+    "description": "Phim trinh thám"
+  },
+  {
+    "keyMap": "G_SCHOOL",
+    "type": "GENRE",
+    "valueEn": "School",
+    "valueVi": "Học Đường",
+    "description": "Phim học đường"
+  },
+  {
+    "keyMap": "G_SUPERHERO",
+    "type": "GENRE",
+    "valueEn": "Superhero",
+    "valueVi": "Siêu Anh Hùng",
+    "description": "Phim siêu anh hùng"
+  },
+  {
+    "keyMap": "G_MAGIC",
+    "type": "GENRE",
+    "valueEn": "Magic",
+    "valueVi": "Phép Thuật",
+    "description": "Phim phép thuật"
+  },
+  {
+    "keyMap": "G_MYTH",
+    "type": "GENRE",
+    "valueEn": "Mythology",
+    "valueVi": "Thần Thoại",
+    "description": "Phim thần thoại"
+  },
+  {
+    "keyMap": "G_LGBT",
+    "type": "GENRE",
+    "valueEn": "LGBT+",
+    "valueVi": "LGBT+",
+    "description": "Phim LGBT+"
+  },
+  {
+    "keyMap": "V_ALL",
+    "type": "VERSION",
+    "valueEn": "All",
+    "valueVi": "Tất cả",
+    "description": "Tất cả phiên bản"
+  },
+  {
+    "keyMap": "V_SUB",
+    "type": "VERSION",
+    "valueEn": "Subtitle",
+    "valueVi": "Phụ đề",
+    "description": "Phim có phụ đề"
+  },
+  {
+    "keyMap": "V_DUB",
+    "type": "VERSION",
+    "valueEn": "Dubbed",
+    "valueVi": "Lồng tiếng",
+    "description": "Phim lồng tiếng"
+  },
+  {
+    "keyMap": "V_VOICE_NORTH",
+    "type": "VERSION",
+    "valueEn": "Voice North",
+    "valueVi": "Thuyết minh giọng Bắc",
+    "description": "Thuyết minh miền Bắc"
+  },
+  {
+    "keyMap": "V_VOICE_SOUTH",
+    "type": "VERSION",
+    "valueEn": "Voice South",
+    "valueVi": "Thuyết minh giọng Nam",
+    "description": "Thuyết minh miền Nam"
+  },
+  {
+    "keyMap": "Y_ALL",
+    "type": "YEAR",
+    "valueEn": "All",
+    "valueVi": "Tất cả",
+    "description": "Tất cả năm"
+  },
+  {
+    "keyMap": "Y_2025",
+    "type": "YEAR",
+    "valueEn": "2025",
+    "valueVi": "2025",
+    "description": "Năm 2025"
+  },
+  {
+    "keyMap": "Y_2024",
+    "type": "YEAR",
+    "valueEn": "2024",
+    "valueVi": "2024",
+    "description": "Năm 2024"
+  },
+  {
+    "keyMap": "Y_2023",
+    "type": "YEAR",
+    "valueEn": "2023",
+    "valueVi": "2023",
+    "description": "Năm 2023"
+  },
+  {
+    "keyMap": "Y_2022",
+    "type": "YEAR",
+    "valueEn": "2022",
+    "valueVi": "2022",
+    "description": "Năm 2022"
+  },
+  {
+    "keyMap": "Y_2021",
+    "type": "YEAR",
+    "valueEn": "2021",
+    "valueVi": "2021",
+    "description": "Năm 2021"
+  },
+  {
+    "keyMap": "Y_2020",
+    "type": "YEAR",
+    "valueEn": "2020",
+    "valueVi": "2020",
+    "description": "Năm 2020"
+  },
+  {
+    "keyMap": "Y_2019",
+    "type": "YEAR",
+    "valueEn": "2019",
+    "valueVi": "2019",
+    "description": "Năm 2019"
+  },
+  {
+    "keyMap": "Y_2018",
+    "type": "YEAR",
+    "valueEn": "2018",
+    "valueVi": "2018",
+    "description": "Năm 2018"
+  },
+  {
+    "keyMap": "Y_2017",
+    "type": "YEAR",
+    "valueEn": "2017",
+    "valueVi": "2017",
+    "description": "Năm 2017"
+  },
+  {
+    "keyMap": "Y_2016",
+    "type": "YEAR",
+    "valueEn": "2016",
+    "valueVi": "2016",
+    "description": "Năm 2016"
+  },
+  {
+    "keyMap": "Y_2015",
+    "type": "YEAR",
+    "valueEn": "2015",
+    "valueVi": "2015",
+    "description": "Năm 2015"
+  },
+  {
+    "keyMap": "Y_2014",
+    "type": "YEAR",
+    "valueEn": "2014",
+    "valueVi": "2014",
+    "description": "Năm 2014"
+  },
+  {
+    "keyMap": "Y_2013",
+    "type": "YEAR",
+    "valueEn": "2013",
+    "valueVi": "2013",
+    "description": "Năm 2013"
+  },
+  {
+    "keyMap": "Y_2012",
+    "type": "YEAR",
+    "valueEn": "2012",
+    "valueVi": "2012",
+    "description": "Năm 2012"
+  },
+  {
+    "keyMap": "Y_2011",
+    "type": "YEAR",
+    "valueEn": "2011",
+    "valueVi": "2011",
+    "description": "Năm 2011"
+  },
+  {
+    "keyMap": "Y_2010",
+    "type": "YEAR",
+    "valueEn": "2010",
+    "valueVi": "2010",
+    "description": "Năm 2010"
+  },
+  {
+    "keyMap": "S_NEW",
+    "type": "SORT",
+    "valueEn": "Newest",
+    "valueVi": "Mới nhất",
+    "description": "Phim mới nhất"
+  },
+  {
+    "keyMap": "S_UPDATE",
+    "type": "SORT",
+    "valueEn": "Latest Update",
+    "valueVi": "Mới cập nhật",
+    "description": "Phim mới cập nhật"
+  },
+  {
+    "keyMap": "S_IMDB",
+    "type": "SORT",
+    "valueEn": "IMDb Score",
+    "valueVi": "Điểm IMDb",
+    "description": "Sắp xếp theo IMDb"
+  },
+  {
+    "keyMap": "S_VIEW",
+    "type": "SORT",
+    "valueEn": "Views",
+    "valueVi": "Lượt xem",
+    "description": "Sắp xếp theo lượt xem"
+  },
+  {
+    "keyMap": "M",
+    "type": "GENDER",
+    "valueEn": "Male",
+    "valueVi": "Nam",
+    "description": "Giới tính Nam"
+  },
+  {
+    "keyMap": "F",
+    "type": "GENDER",
+    "valueEn": "Female",
+    "valueVi": "Nữ",
+    "description": "Giới tính Nữ"
+  },
+  {
+    "keyMap": "O",
+    "type": "GENDER",
+    "valueEn": "Other",
+    "valueVi": "Khác",
+    "description": "Giới tính khác"
+  },
+  {
+    "keyMap": "ROLE_ADMIN",
+    "type": "ROLE",
+    "valueEn": "Admin",
+    "valueVi": "Quản trị viên",
+    "description": "Có full quyền"
+  },
+  {
+    "keyMap": "ROLE_MOD",
+    "type": "ROLE",
+    "valueEn": "Moderator",
+    "valueVi": "Người kiểm duyệt",
+    "description": "Kiểm duyệt nội dung"
+  },
+  {
+    "keyMap": "ROLE_USER",
+    "type": "ROLE",
+    "valueEn": "User",
+    "valueVi": "Người dùng",
+    "description": "Người dùng cơ bản"
+  },
+  {
+    "keyMap": "US_ACTIVE",
+    "type": "USER_STATUS",
+    "valueEn": "Active",
+    "valueVi": "Hoạt động",
+    "description": "Tài khoản người dùng đang hoạt động bình thường"
+  },
+  {
+    "keyMap": "US_INACTIVE",
+    "type": "USER_STATUS",
+    "valueEn": "Inactive",
+    "valueVi": "Không hoạt động",
+    "description": "Tài khoản chưa được kích hoạt hoặc đã bị vô hiệu hóa tạm thời"
+  },
+  {
+    "keyMap": "US_BANNED",
+    "type": "USER_STATUS",
+    "valueEn": "Banned",
+    "valueVi": "Đã bị khóa",
+    "description": "Tài khoản vi phạm và bị cấm sử dụng hệ thống"
+  },
+  {
+    "keyMap": "FS_COMING_SOON",
+    "type": "FILM_STATUS",
+    "valueEn": "Coming Soon",
+    "valueVi": "Sắp chiếu",
+    "description": "Phim đã lên lịch và chuẩn bị công chiếu"
+  },
+  {
+    "keyMap": "FS_SHOWING",
+    "type": "FILM_STATUS",
+    "valueEn": "Now Showing",
+    "valueVi": "Đang chiếu",
+    "description": "Phim hiện đang được chiếu trên hệ thống"
+  },
+  {
+    "keyMap": "FS_STOPPED",
+    "type": "FILM_STATUS",
+    "valueEn": "Stopped",
+    "valueVi": "Ngừng chiếu",
+    "description": "Phim đã ngừng chiếu hoặc bị gỡ khỏi hệ thống"
+  },
+  {
+    "keyMap": "MONTH",
+    "type": "DURATION_TYPE",
+    "valueEn": "Month",
+    "valueVi": "Tháng",
+    "description": "Đơn vị thời gian Tháng"
+  },
+  {
+    "keyMap": "YEAR",
+    "type": "DURATION_TYPE",
+    "valueEn": "Year",
+    "valueVi": "Năm",
+    "description": "Đơn vị thời gian Năm"
+  },
+  {
+    "keyMap": "DAY",
+    "type": "DURATION_TYPE",
+    "valueEn": "Day",
+    "valueVi": "Ngày",
+    "description": "Đơn vị thời gian Ngày"
+  }
+]
