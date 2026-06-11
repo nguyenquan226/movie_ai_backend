@@ -6,11 +6,12 @@
 # ============================================================================
 
 .PHONY: help install dev start debug prod build clean \
-        docker-up docker-down docker-restart docker-logs docker-ps docker-clean \
-        elastic-up elastic-down elastic-logs \
-        db-logs redis-logs \
+        services-up services-down services-restart \
+        db-up db-down db-clean redis-up redis-down redis-clean elastic-up elastic-down elastic-clean \
+        docker-ps docker-logs docker-clean docker-reset \
+        db-logs redis-logs elastic-logs \
         lint format test test-watch test-cov test-e2e test-debug \
-        env-setup check-env check-deps status fresh
+        env-setup check-env check-deps status fresh ensure-services
 
 # Colors for help output
 CYAN    := \033[36m
@@ -43,24 +44,32 @@ help: ## Show this help message
 	@echo "  $(CYAN)make fresh$(RESET)            Clean reinstall (remove node_modules + reinstall)"
 	@echo ""
 	@echo "$(BOLD)$(GREEN)Application$(RESET)"
-	@echo "  $(CYAN)make dev$(RESET)              Start app in development mode (watch)"
+	@echo "  $(CYAN)make dev$(RESET)              Start app in dev mode (auto-starts services)"
 	@echo "  $(CYAN)make start$(RESET)            Start app in default mode"
 	@echo "  $(CYAN)make debug$(RESET)            Start app in debug mode (watch + inspect)"
 	@echo "  $(CYAN)make prod$(RESET)             Start app in production mode"
 	@echo "  $(CYAN)make build$(RESET)            Build the project for production"
 	@echo "  $(CYAN)make clean$(RESET)            Remove build artifacts (dist/)"
 	@echo ""
-	@echo "$(BOLD)$(GREEN)Docker - Core Services (PostgreSQL + Redis)$(RESET)"
-	@echo "  $(CYAN)make docker-up$(RESET)        Start PostgreSQL and Redis containers"
-	@echo "  $(CYAN)make docker-down$(RESET)      Stop and remove containers"
-	@echo "  $(CYAN)make docker-restart$(RESET)   Restart all containers"
-	@echo "  $(CYAN)make docker-logs$(RESET)      Follow logs of all containers"
-	@echo "  $(CYAN)make docker-ps$(RESET)        Show running containers status"
-	@echo "  $(CYAN)make docker-clean$(RESET)     Stop containers and remove volumes (data loss)"
+	@echo "$(BOLD)$(GREEN)Docker - Individual Services$(RESET)"
+	@echo "  $(CYAN)make db-up$(RESET)            Start PostgreSQL only"
+	@echo "  $(CYAN)make db-down$(RESET)          Stop PostgreSQL"
+	@echo "  $(CYAN)make redis-up$(RESET)         Start Redis only"
+	@echo "  $(CYAN)make redis-down$(RESET)       Stop Redis"
+	@echo "  $(CYAN)make elastic-up$(RESET)       Start Elasticsearch only"
+	@echo "  $(CYAN)make elastic-down$(RESET)     Stop Elasticsearch"
+	@echo "  $(CYAN)make db-clean$(RESET)        Remove PostgreSQL and its data"
+	@echo "  $(CYAN)make redis-clean$(RESET)     Remove Redis and its data"
+	@echo "  $(CYAN)make elastic-clean$(RESET)   Remove Elasticsearch and its data"
 	@echo ""
-	@echo "$(BOLD)$(GREEN)Docker - Elasticsearch$(RESET)"
-	@echo "  $(CYAN)make elastic-up$(RESET)       Start Elasticsearch container"
-	@echo "  $(CYAN)make elastic-down$(RESET)     Stop Elasticsearch container"
+	@echo "$(BOLD)$(GREEN)Docker - Batch Operations$(RESET)"
+	@echo "  $(CYAN)make services-up$(RESET)      Start all services (DB + Redis + ES)"
+	@echo "  $(CYAN)make services-down$(RESET)    Stop all services"
+	@echo "  $(CYAN)make services-restart$(RESET) Restart all services"
+	@echo "  $(CYAN)make docker-ps$(RESET)        Show running containers status"
+	@echo "  $(CYAN)make docker-logs$(RESET)      Follow logs of all containers"
+	@echo "  $(CYAN)make docker-clean$(RESET)     Stop containers and remove volumes (data loss)"
+	@echo "  $(CYAN)make docker-reset$(RESET)    Remove ALL (containers + volumes + images)"
 	@echo ""
 	@echo "$(BOLD)$(GREEN)Docker - Individual Logs$(RESET)"
 	@echo "  $(CYAN)make db-logs$(RESET)          Follow PostgreSQL logs"
@@ -102,7 +111,7 @@ env-setup: ## Create .env from .env.example if it doesn't exist
 		echo "$(BOLD)$(YELLOW).env file already exists, skipping...$(RESET)"; \
 	fi
 
-setup: env-setup docker-up install ## Full project setup (env + docker + install)
+setup: env-setup services-up install ## Full project setup (env + docker + install)
 	@echo ""
 	@echo "$(BOLD)$(GREEN)Project setup complete!$(RESET)"
 	@echo "$(BOLD)$(YELLOW)Don't forget to configure your .env file$(RESET)"
@@ -119,7 +128,41 @@ fresh: ## Clean reinstall (remove node_modules + reinstall)
 # APPLICATION
 # ============================================================================
 
-dev: ## Start app in development mode (watch)
+ensure-services: ## Check and auto-start required services (PostgreSQL + Redis)
+	@echo "$(BOLD)$(CYAN)Checking required services...$(RESET)"
+	@PG_RUNNING=$$(docker ps --filter "name=postgres-db" --filter "status=running" -q 2>/dev/null); \
+	REDIS_RUNNING=$$(docker ps --filter "name=redis-db" --filter "status=running" -q 2>/dev/null); \
+	NEED_START=""; \
+	if [ -z "$$PG_RUNNING" ]; then \
+		echo "  $(YELLOW)PostgreSQL is not running$(RESET)"; \
+		NEED_START="yes"; \
+	else \
+		echo "  $(GREEN)✓ PostgreSQL is running$(RESET)"; \
+	fi; \
+	if [ -z "$$REDIS_RUNNING" ]; then \
+		echo "  $(YELLOW)Redis is not running$(RESET)"; \
+		NEED_START="yes"; \
+	else \
+		echo "  $(GREEN)✓ Redis is running$(RESET)"; \
+	fi; \
+	if [ -n "$$NEED_START" ]; then \
+		echo ""; \
+		echo "$(BOLD)$(GREEN)Auto-starting missing services...$(RESET)"; \
+		if [ -z "$$PG_RUNNING" ]; then \
+			docker compose --profile db up -d postgres; \
+		fi; \
+		if [ -z "$$REDIS_RUNNING" ]; then \
+			docker compose --profile cache up -d redis; \
+		fi; \
+		echo "$(BOLD)$(GREEN)Services started!$(RESET)"; \
+		echo "$(BOLD)$(CYAN)Waiting for services to be healthy...$(RESET)"; \
+		sleep 3; \
+	else \
+		echo "  $(GREEN)All required services are running!$(RESET)"; \
+	fi
+	@echo ""
+
+dev: ensure-services ## Start app in development mode (auto-starts services)
 	@echo "$(BOLD)$(GREEN)Starting in development mode...$(RESET)"
 	npm run dev
 
@@ -146,62 +189,109 @@ clean: ## Remove build artifacts (dist/)
 	@echo "$(BOLD)$(GREEN)Clean complete!$(RESET)"
 
 # ============================================================================
-# DOCKER - CORE SERVICES (PostgreSQL + Redis)
+# DOCKER - INDIVIDUAL SERVICES
 # ============================================================================
 
-docker-up: ## Start PostgreSQL and Redis containers
-	@echo "$(BOLD)$(GREEN)Starting PostgreSQL and Redis...$(RESET)"
-	docker compose up -d
-	@echo "$(BOLD)$(GREEN)Containers started!$(RESET)"
-	@echo "  PostgreSQL: localhost:5432"
-	@echo "  Redis:      localhost:6379"
+db-up: ## Start PostgreSQL only
+	@echo "$(BOLD)$(GREEN)Starting PostgreSQL...$(RESET)"
+	docker compose --profile db up -d postgres
+	@echo "$(BOLD)$(GREEN)PostgreSQL started at localhost:5432$(RESET)"
 
-docker-down: ## Stop and remove containers
-	@echo "$(BOLD)$(YELLOW)Stopping containers...$(RESET)"
-	docker compose down
-	@echo "$(BOLD)$(GREEN)Containers stopped!$(RESET)"
+db-down: ## Stop PostgreSQL
+	@echo "$(BOLD)$(YELLOW)Stopping PostgreSQL...$(RESET)"
+	docker compose --profile db stop postgres
+	@echo "$(BOLD)$(GREEN)PostgreSQL stopped!$(RESET)"
 
-docker-restart: docker-down docker-up ## Restart all containers
+redis-up: ## Start Redis only
+	@echo "$(BOLD)$(GREEN)Starting Redis...$(RESET)"
+	docker compose --profile cache up -d redis
+	@echo "$(BOLD)$(GREEN)Redis started at localhost:6379$(RESET)"
 
-docker-logs: ## Follow logs of all containers
-	docker compose logs -f
+redis-down: ## Stop Redis
+	@echo "$(BOLD)$(YELLOW)Stopping Redis...$(RESET)"
+	docker compose --profile cache stop redis
+	@echo "$(BOLD)$(GREEN)Redis stopped!$(RESET)"
 
-docker-ps: ## Show running containers status
-	@echo "$(BOLD)$(CYAN)Container status:$(RESET)"
-	docker compose ps
-
-docker-clean: ## Stop containers and remove volumes (data loss)
-	@echo "$(BOLD)$(RED)WARNING: This will delete all data in PostgreSQL and Redis!$(RESET)"
-	@echo "$(BOLD)$(YELLOW)Stopping containers and removing volumes...$(RESET)"
-	docker compose down -v
-	@echo "$(BOLD)$(GREEN)Containers and volumes removed!$(RESET)"
-
-# ============================================================================
-# DOCKER - ELASTICSEARCH
-# ============================================================================
-
-elastic-up: ## Start Elasticsearch container
+elastic-up: ## Start Elasticsearch only
 	@echo "$(BOLD)$(GREEN)Starting Elasticsearch...$(RESET)"
 	docker compose --profile search up -d elasticsearch
 	@echo "$(BOLD)$(GREEN)Elasticsearch started at localhost:9200$(RESET)"
 
-elastic-down: ## Stop Elasticsearch container
+elastic-down: ## Stop Elasticsearch
 	@echo "$(BOLD)$(YELLOW)Stopping Elasticsearch...$(RESET)"
 	docker compose --profile search stop elasticsearch
 	@echo "$(BOLD)$(GREEN)Elasticsearch stopped!$(RESET)"
 
-elastic-logs: ## Follow Elasticsearch logs
-	docker compose logs -f elasticsearch
+
+db-clean: ## Remove PostgreSQL container and its data
+	@echo "$(BOLD)$(RED)WARNING: This will delete all PostgreSQL data!$(RESET)"
+	@echo "$(BOLD)$(YELLOW)Removing PostgreSQL container and volume...$(RESET)"
+	docker compose --profile db down -v --remove-orphans
+	@echo "$(BOLD)$(GREEN)PostgreSQL removed!$(RESET)"
+
+redis-clean: ## Remove Redis container and its data
+	@echo "$(BOLD)$(RED)WARNING: This will delete all Redis data!$(RESET)"
+	@echo "$(BOLD)$(YELLOW)Removing Redis container and volume...$(RESET)"
+	docker compose --profile cache down -v --remove-orphans
+	@echo "$(BOLD)$(GREEN)Redis removed!$(RESET)"
+
+elastic-clean: ## Remove Elasticsearch container and its data
+	@echo "$(BOLD)$(RED)WARNING: This will delete all Elasticsearch data!$(RESET)"
+	@echo "$(BOLD)$(YELLOW)Removing Elasticsearch container and volume...$(RESET)"
+	docker compose --profile search down -v --remove-orphans
+	@echo "$(BOLD)$(GREEN)Elasticsearch removed!$(RESET)"
+
+# ============================================================================
+# DOCKER - BATCH OPERATIONS
+# ============================================================================
+
+services-up: ## Start all services (PostgreSQL + Redis + Elasticsearch)
+	@echo "$(BOLD)$(GREEN)Starting all services...$(RESET)"
+	docker compose --profile db --profile cache --profile search up -d
+	@echo "$(BOLD)$(GREEN)All services started!$(RESET)"
+	@echo "  PostgreSQL:    localhost:5432"
+	@echo "  Redis:         localhost:6379"
+	@echo "  Elasticsearch: localhost:9200"
+
+services-down: ## Stop all services
+	@echo "$(BOLD)$(YELLOW)Stopping all services...$(RESET)"
+	docker compose --profile db --profile cache --profile search down
+	@echo "$(BOLD)$(GREEN)All services stopped!$(RESET)"
+
+services-restart: services-down services-up ## Restart all services
+
+docker-logs: ## Follow logs of all containers
+	docker compose --profile db --profile cache --profile search logs -f
+
+docker-ps: ## Show running containers status
+	@echo "$(BOLD)$(CYAN)Container status:$(RESET)"
+	docker compose --profile db --profile cache --profile search ps
+
+docker-clean: ## Stop containers and remove volumes (data loss)
+	@echo "$(BOLD)$(RED)WARNING: This will delete all data in PostgreSQL, Redis and Elasticsearch!$(RESET)"
+	@echo "$(BOLD)$(YELLOW)Stopping containers and removing volumes...$(RESET)"
+	docker compose --profile db --profile cache --profile search down -v
+	@echo "$(BOLD)$(GREEN)Containers and volumes removed!$(RESET)"
+
+
+docker-reset: ## Remove ALL containers, volumes and images, then restart fresh
+	@echo "$(BOLD)$(RED)WARNING: This will delete ALL data and downloaded images!$(RESET)"
+	@echo "$(BOLD)$(YELLOW)Removing all containers, volumes and images...$(RESET)"
+	docker compose --profile db --profile cache --profile search down -v --rmi all --remove-orphans
+	@echo "$(BOLD)$(GREEN)Everything removed! Run 'make services-up' to start fresh.$(RESET)"
 
 # ============================================================================
 # DOCKER - INDIVIDUAL SERVICE LOGS
 # ============================================================================
 
 db-logs: ## Follow PostgreSQL logs
-	docker compose logs -f postgres
+	docker compose --profile db logs -f postgres
 
 redis-logs: ## Follow Redis logs
-	docker compose logs -f redis
+	docker compose --profile cache logs -f redis
+
+elastic-logs: ## Follow Elasticsearch logs
+	docker compose --profile search logs -f elasticsearch
 
 # ============================================================================
 # TESTING
@@ -260,7 +350,7 @@ check-deps: ## Check if required tools are installed
 	fi
 	@printf "  Docker:          "; \
 	if command -v docker > /dev/null 2>&1; then \
-		echo "$(GREEN)$$(docker -v | cut -d' ' -f3 | tr -d ',')$(RESET)"; \
+		echo "$(GREEN)$$(docker -v | cut -d' ' -f3 | tr -d ','  )$(RESET)"; \
 	else \
 		echo "$(RED)Not installed$(RESET)"; \
 	fi
@@ -321,5 +411,5 @@ status: check-deps ## Show project status (containers, env, deps)
 	fi
 	@echo ""
 	@echo "$(BOLD)$(CYAN)Docker Containers:$(RESET)"
-	@docker compose ps 2>/dev/null || echo "  $(RED)Docker is not running$(RESET)"
+	@docker compose --profile db --profile cache --profile search ps 2>/dev/null || echo "  $(RED)Docker is not running$(RESET)"
 	@echo ""
