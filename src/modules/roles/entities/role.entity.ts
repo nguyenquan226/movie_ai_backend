@@ -36,13 +36,13 @@ export class Role {
   deletedAt: Date;
 
   @Column({ nullable: true })
-  createdBy: number;
+  createdBy?: string;
 
   @Column({ nullable: true })
-  updatedBy: number;
+  updatedBy?: string;
 
   @Column({ nullable: true })
-  deletedBy: number;
+  deletedBy?: string;
 
   @OneToMany(() => User, (user) => user.role)
   users: User[];

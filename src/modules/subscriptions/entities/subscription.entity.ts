@@ -20,7 +20,7 @@ export class Subscription {
   subscriptionId: string;
 
   @Column({ name: 'user_id' })
-  userId: number;
+  userId: string;
 
   @Column({ name: 'plan_id' })
   planId: number;
@@ -54,13 +54,13 @@ export class Subscription {
   deletedAt?: Date;
 
   @Column({ nullable: true })
-  createdBy?: number;
+  createdBy?: string;
 
   @Column({ nullable: true })
-  updatedBy?: number;
+  updatedBy?: string;
 
   @Column({ nullable: true })
-  deletedBy?: number;
+  deletedBy?: string;
 
   @ManyToOne(() => SubscriptionPlan, (plan) => plan)
   @JoinColumn({ name: 'plan_id', referencedColumnName: 'planId' })

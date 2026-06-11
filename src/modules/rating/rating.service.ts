@@ -331,7 +331,7 @@ export class RatingService {
     }
   }
 
-  async hideRating(ratingId: string, userId: number) {
+  async hideRating(ratingId: string, userId: string) {
     try {
       const rating = await this.ratingRepo.findOne({
         where: { ratingId },
@@ -362,7 +362,7 @@ export class RatingService {
     }
   }
 
-  async unhideRating(ratingId: string, userId: number) {
+  async unhideRating(ratingId: string, userId: string) {
     try {
       const rating = await this.ratingRepo.findOne({
         where: { ratingId },

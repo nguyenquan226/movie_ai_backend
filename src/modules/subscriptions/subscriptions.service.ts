@@ -21,7 +21,7 @@ export class SubscriptionsService {
     return `This action returns all subscriptions`;
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     try {
       const subscription = await this.SubscriptionRepository.findOne({
         where: { userId: id, status: SubscriptionStatus.ACTIVE },
@@ -65,11 +65,11 @@ export class SubscriptionsService {
     }
   }
 
-  update(id: number, updateSubscriptionDto: UpdateSubscriptionDto) {
+  update(id: string, updateSubscriptionDto: UpdateSubscriptionDto) {
     return `This action updates a #${id} subscription`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} subscription`;
   }
 }

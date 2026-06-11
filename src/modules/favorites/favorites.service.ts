@@ -18,7 +18,7 @@ export class FavoritesService {
     private filmRepo: Repository<Film>,
   ) {}
 
-  async toggleFavorite(userId: number, filmId: string) {
+  async toggleFavorite(userId: string, filmId: string) {
     try {
       const user = await this.userRepo.findOne({ where: { userId } });
       const film = await this.filmRepo.findOne({ where: { filmId } });
@@ -82,7 +82,7 @@ export class FavoritesService {
     }
   }
 
-  async getUserFavoriteFilmList(userId: number) {
+  async getUserFavoriteFilmList(userId: string) {
     try {
       const favorites = await this.favRepo.find({
         where: { userId: userId },

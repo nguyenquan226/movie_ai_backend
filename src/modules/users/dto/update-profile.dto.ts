@@ -1,10 +1,9 @@
 import { Type } from 'class-transformer';
-import { IsNumber, IsString, Length } from 'class-validator';
+import { IsUUID, IsString, Length } from 'class-validator';
 
 export class UpdateProfileDto {
-  @IsNumber()
-  @Type(() => Number)
-  userId: number;
+  @IsUUID()
+  userId: string;
 
   @IsString({ message: 'fullName must be STRING format' })
   @Length(3, 20, {

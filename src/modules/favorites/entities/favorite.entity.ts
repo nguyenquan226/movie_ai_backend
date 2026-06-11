@@ -17,7 +17,7 @@ export class Favorite {
   favId: string;
 
   @Column({ name: 'user_id' })
-  userId: number;
+  userId: string;
 
   @Column({ name: 'film_id' })
   filmId: string;

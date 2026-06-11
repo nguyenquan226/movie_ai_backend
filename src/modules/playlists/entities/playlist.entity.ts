@@ -17,7 +17,7 @@ export class Playlist {
   playlistId: string;
 
   @Column({ name: 'userId' })
-  userId: number;
+  userId: string;
 
   @ManyToOne(() => User, (user) => user.playlist, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'userId', referencedColumnName: 'userId' })

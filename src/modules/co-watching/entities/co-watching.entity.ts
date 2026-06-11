@@ -20,7 +20,7 @@ export class RoomCoWatching {
   name: string;
 
   @Column({ nullable: false })
-  hostId: number;
+  hostId: string;
 
   @ManyToOne(() => User, { eager: false, onDelete: 'CASCADE' })
   @JoinColumn({ name: 'hostId', referencedColumnName: 'userId' })

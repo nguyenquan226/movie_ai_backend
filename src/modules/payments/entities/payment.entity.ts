@@ -18,7 +18,7 @@ export class Payment {
   paymentId: string;
 
   @Column({ name: 'user_id' })
-  userId: number;
+  userId: string;
 
   @Column({ name: 'plan_id' })
   planId: number;

@@ -68,13 +68,13 @@ export class Comment {
   deletedAt?: Date;
 
   @Column({ nullable: true })
-  createdBy: number;
+  createdBy?: string;
 
   @Column({ nullable: true })
-  updatedBy: number;
+  updatedBy?: string;
 
   @Column({ nullable: true })
-  deletedBy: number;
+  deletedBy?: string;
 
   @OneToMany(() => CommentReaction, (reaction) => reaction.comment)
   reactions: CommentReaction[];

@@ -51,7 +51,7 @@ export class NotificationsService {
     };
   }
 
-  async getUnreadCount(userId: number) {
+  async getUnreadCount(userId: string) {
     const count = await this.notificationRepo.count({
       where: { user: { userId }, isRead: false },
     });
@@ -116,7 +116,7 @@ export class NotificationsService {
     };
   }
 
-  async markAsReadByReportId(reportId: string, userId: number) {
+  async markAsReadByReportId(reportId: string, userId: string) {
     const notifications = await this.notificationRepo
       .createQueryBuilder('notification')
       .where('notification.userId = :userId', { userId })
@@ -137,7 +137,7 @@ export class NotificationsService {
     }
   }
 
-  async markAsReadByTargetId(targetId: string, reportType: string, userId: number) {
+  async markAsReadByTargetId(targetId: string, reportType: string, userId: string) {
     const notifications = await this.notificationRepo
       .createQueryBuilder('notification')
       .where('notification.userId = :userId', { userId })

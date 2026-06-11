@@ -53,7 +53,7 @@ export class ReportGateway implements OnGatewayConnection, OnGatewayDisconnect {
     }
   }
 
-  sendReportNotificationToAdmin(userId: number, data: any) {
+  sendReportNotificationToAdmin(userId: string, data: any) {
     for (const socketId of this.adminSockets) {
       this.server.to(socketId).emit('reportNotification', data);
     }

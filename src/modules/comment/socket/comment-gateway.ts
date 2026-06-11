@@ -118,17 +118,17 @@ export class CommentGateway implements OnGatewayConnection {
     this.server.emit('countComments', data);
   }
 
-  sendHiddenCommentNotification(userId: number, data: any) {
+  sendHiddenCommentNotification(userId: string, data: any) {
     const userIdStr = String(userId);
     this.emitToUser(userIdStr, 'hiddenCommentNotification', data);
   }
 
-  sendWarningNotification(userId: number, data: any) {
+  sendWarningNotification(userId: string, data: any) {
     const userIdStr = String(userId);
     this.emitToUser(userIdStr, 'warningNotification', data);
   }
 
-  sendInfoNotification(userId: number, data: any) {
+  sendInfoNotification(userId: string, data: any) {
     const userIdStr = String(userId);
     this.emitToUser(userIdStr, 'infoNotification', data);
   }

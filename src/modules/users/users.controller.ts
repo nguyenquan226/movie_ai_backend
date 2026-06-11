@@ -42,7 +42,7 @@ export class UsersController {
   @SkipCheckPermission()
   @ResponseMessage('Fetch user by id')
   findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
+    return this.usersService.findOne(id);
   }
 
   @Patch('update')
@@ -63,6 +63,6 @@ export class UsersController {
   @Permission('Delete a user by ID', 'USERS')
   @ResponseMessage('Delete a user')
   remove(@Param('id') id: string, @User() user: IUser) {
-    return this.usersService.remove(+id, user);
+    return this.usersService.remove(id, user);
   }
 }
