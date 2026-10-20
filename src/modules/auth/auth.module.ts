@@ -10,6 +10,7 @@ import ms from 'ms';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { RolesModule } from '../roles/roles.module';
 import { EmailModule } from '../email/email.module';
+import { TokenBlacklistService } from './token-blacklist.service';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { EmailModule } from '../email/email.module';
     RolesModule,
     EmailModule,
     JwtModule.registerAsync({
+      global: true,
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         secret: configService.get<string>('ACCESS_TOKEN_SECRET'),
@@ -29,6 +31,7 @@ import { EmailModule } from '../email/email.module';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
+  providers: [AuthService, LocalStrategy, JwtStrategy, TokenBlacklistService],
+  exports: [TokenBlacklistService, AuthService],
 })
 export class AuthModule {}

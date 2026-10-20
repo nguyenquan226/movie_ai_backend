@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersService } from 'src/modules/users/users.service';
 import { IUser } from 'src/modules/users/interface/user.interface';
 import { ConfigService } from '@nestjs/config';
@@ -8,6 +8,7 @@ import { Response } from 'express';
 import { RegisterUserDto } from 'src/modules/users/dto/register-user.dto';
 import { RolesService } from '../roles/roles.service';
 import { EmailService } from '../email/email.service';
+import { TokenBlacklistService } from './token-blacklist.service';
 
 @Injectable()
 export class AuthService {
@@ -17,6 +18,7 @@ export class AuthService {
     private jwtService: JwtService,
     private roleService: RolesService,
     private emailService: EmailService,
+    private tokenBlacklistService: TokenBlacklistService,
   ) {}
 
   async validateUser(email: string, pass: string): Promise<any> {
@@ -105,10 +107,21 @@ export class AuthService {
     return await this.usersService.register(user);
   }
 
-  async handleLogout(respones: Response, user: IUser) {
+  async handleLogout(respones: Response, user: IUser, accessToken?: string) {
     await this.usersService.updateUserToken('', user.userId);
     respones.clearCookie('refresh_token');
+    if (accessToken) {
+      await this.tokenBlacklistService.add(accessToken, this.getRemainingTtlSeconds(accessToken));
+    }
     return { EC: 1, EM: 'Logout ok' };
+  }
+
+  getRemainingTtlSeconds(token: string): number {
+    const decoded = this.jwtService.decode(token) as { exp?: number } | null;
+    if (!decoded?.exp) {
+      return 0;
+    }
+    return Math.max(decoded.exp - Math.floor(Date.now() / 1000), 0);
   }
 
   createRefreshToken = (payload: any) => {

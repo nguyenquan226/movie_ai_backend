@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Throttle } from '@nestjs/throttler';
 import { AuthService } from './auth.service';
-import { Public, ResponseMessage, SkipCheckPermission, User } from 'src/decorators/customize';
+import { Public, ResponseMessage, User } from 'src/decorators/customize';
 import { Permission } from 'src/decorators/permission.decorator';
 import { LocalAuthGuard } from 'src/modules/auth/local-auth.guard';
 import type { Request, Response } from 'express';
@@ -18,6 +19,7 @@ export class AuthController {
   ) { }
 
   @Public()
+  @Throttle({ default: { limit: 5, ttl: 60000 } })
   @Post('login')
   @Permission('User login', 'AUTH')
   @UseGuards(LocalAuthGuard)
@@ -27,6 +29,7 @@ export class AuthController {
   }
 
   @Public()
+  @Throttle({ default: { limit: 10, ttl: 60000 } })
   @ResponseMessage('Get User by refresh token')
   @Get('/refreshToken')
   @Permission('Refresh token', 'AUTH')
@@ -67,7 +70,13 @@ export class AuthController {
   @ResponseMessage('User log out')
   @Post('/logout')
   @Permission('User log out', 'AUTH')
-  logout(@Res({ passthrough: true }) response: Response, @User() user: IUser) {
-    return this.authService.handleLogout(response, user);
+  logout(
+    @Req() request: Request,
+    @Res({ passthrough: true }) response: Response,
+    @User() user: IUser,
+  ) {
+    const authorization = request.headers.authorization || '';
+    const accessToken = authorization.startsWith('Bearer ') ? authorization.slice(7) : undefined;
+    return this.authService.handleLogout(response, user, accessToken);
   }
 }
