@@ -1,3 +1,4 @@
+import { createHash } from 'crypto';
 import {
   BadRequestException,
   Injectable,
@@ -26,6 +27,8 @@ import { RedisService } from '../redis/redis.service';
 export class FilmsService {
   private readonly REDIS_TTL = 600;
   private readonly REIDS_TTL_GUARD = 180;
+  private readonly FILM_LIST_CACHE_TTL = 60;
+  private readonly FILM_LIST_CACHE_PREFIX = 'films:list:';
 
   constructor(
     @InjectRepository(FilmGenre) private filmGenreRepository: Repository<FilmGenre>,

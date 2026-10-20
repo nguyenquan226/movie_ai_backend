@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  Index,
   JoinColumn,
   ManyToOne,
   OneToMany,
@@ -24,6 +25,9 @@ import { FilmProducer } from 'src/modules/film_producer/entities/film_producer.e
 import { User } from 'src/modules/users/entities/user.entity';
 
 @Entity({ name: 'films' })
+@Index('IDX_films_created_at', ['createdAt'])
+@Index('IDX_films_deleted_at', ['deletedAt'])
+@Index('IDX_films_is_vip', ['isVip'])
 export class Film {
   @PrimaryGeneratedColumn('uuid')
   filmId: string;

@@ -40,6 +40,7 @@ import { NotificationsModule } from './notifications/notifications.module';
 import { ChatbotModule } from './chatbot/chatbot.module';
 import { SearchModule } from './search/search.module';
 import { CoWatchingModule } from './co-watching/co-watching.module';
+import { HealthModule } from './health/health.module';
 
 // ─── Infrastructure ──────────────────────────────────────
 export const INFRASTRUCTURE_MODULES = [
@@ -106,6 +107,7 @@ export const FEATURE_MODULES = [
   ChatbotModule,
   SearchModule,
   CoWatchingModule,
+  HealthModule,
 ];
 
 // ─── All Application Modules ────────────────────────────
