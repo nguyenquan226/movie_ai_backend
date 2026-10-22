@@ -19,6 +19,7 @@ describeWithDatabase('Film relations PostgreSQL integration', () => {
       url: databaseUrl,
       entities: [join(process.cwd(), 'src/modules/**/*.entity.ts')],
       migrations: [join(process.cwd(), 'src/database/migrations/*.ts')],
+      migrationsTransactionMode: 'each',
       synchronize: false,
       dropSchema: true,
     });

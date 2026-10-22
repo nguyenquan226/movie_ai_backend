@@ -10,5 +10,6 @@ export default new DataSource({
   database: process.env.DB_NAME,
   entities: ['src/modules/**/*.entity.ts'],
   migrations: ['src/database/migrations/*.ts'],
+  migrationsTransactionMode: 'each',
   synchronize: false,
 });
