@@ -20,7 +20,7 @@ import { Producer } from '../producers/entities/producer.entity';
     forwardRef(() => FilmsModule),
     ElasticsearchModule.registerAsync({
       useFactory: async (configService: ConfigService) => ({
-        node: 'http://localhost:9200',
+        node: configService.get<string>('ELASTICSEARCH_NODE') || 'http://localhost:9200',
         // auth: {
         //   username: configService.get<string>('ELASTICSEARCH_USERNAME')!,
         //   password: configService.get<string>('ELASTICSEARCH_PASSWORD')!,

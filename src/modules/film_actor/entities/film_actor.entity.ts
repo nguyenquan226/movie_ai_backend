@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  Index,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -12,6 +13,7 @@ import {
 } from 'typeorm';
 
 @Entity('film_actors')
+@Index('IDX_film_actors_film_id', ['film'])
 export class FilmActor {
   @PrimaryGeneratedColumn({ name: 'film_actor_id' })
   id: number;

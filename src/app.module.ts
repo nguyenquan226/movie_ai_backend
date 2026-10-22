@@ -47,6 +47,7 @@ import { shouldRunMigrations, shouldSynchronize } from './database/typeorm.env';
           configService.get<string>('NODE_ENV'),
           configService.get<string>('DB_MIGRATIONS_RUN'),
         ),
+        migrationsTransactionMode: 'each',
         migrations: [join(__dirname, 'database/migrations/*.{js,ts}')],
       }),
     }),

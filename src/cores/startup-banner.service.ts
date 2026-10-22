@@ -1,16 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { exec } from 'child_process';
-import { promisify } from 'util';
+import { createConnection } from 'net';
 import { readFileSync } from 'fs';
 import { join } from 'path';
-
-const execAsync = promisify(exec);
 
 interface ServiceStatus {
   name: string;
   status: string;
   port: string;
+}
+
+interface TcpEndpoint {
+  host: string;
+  port: number;
+  portLabel: string;
+  valid: boolean;
 }
 
 @Injectable()
@@ -37,30 +41,83 @@ export class StartupBannerService {
     }
   }
 
-  private async checkDockerContainer(containerName: string): Promise<string> {
-    try {
-      const { stdout } = await execAsync(
-        `docker inspect --format='{{.State.Status}}' ${containerName} 2>/dev/null`,
-      );
-      const status = stdout.trim().replace(/'/g, '');
-      return status === 'running' ? 'running' : status || 'stopped';
-    } catch {
-      return 'not found';
-    }
+  private checkTcpService(host: string, port: number): Promise<string> {
+    return new Promise((resolve) => {
+      let socket: ReturnType<typeof createConnection>;
+      try {
+        socket = createConnection({ host, port });
+      } catch {
+        resolve('not found');
+        return;
+      }
+      const finish = (status: string) => {
+        socket.destroy();
+        resolve(status);
+      };
+
+      socket.setTimeout(1500);
+      socket.once('connect', () => finish('running'));
+      socket.once('timeout', () => finish('not found'));
+      socket.once('error', () => finish('not found'));
+    });
   }
 
   private async checkServices(): Promise<ServiceStatus[]> {
+    const postgres = this.getTcpEndpoint(
+      this.configService.get<string>('DB_HOST') || 'localhost',
+      this.configService.get<string>('DB_PORT'),
+      5432,
+    );
+    const redis = this.getTcpEndpoint(
+      this.configService.get<string>('REDIS_HOST') || 'localhost',
+      this.configService.get<string>('REDIS_PORT'),
+      6379,
+    );
+    const elastic = this.getElasticEndpoint(
+      this.configService.get<string>('ELASTICSEARCH_NODE') || 'http://localhost:9200',
+    );
     const [postgresStatus, redisStatus, elasticStatus] = await Promise.all([
-      this.checkDockerContainer('postgres-db'),
-      this.checkDockerContainer('redis-db'),
-      this.checkDockerContainer('elasticsearch'),
+      postgres.valid ? this.checkTcpService(postgres.host, postgres.port) : 'not found',
+      redis.valid ? this.checkTcpService(redis.host, redis.port) : 'not found',
+      elastic.valid ? this.checkTcpService(elastic.host, elastic.port) : 'not found',
     ]);
 
     return [
-      { name: 'PostgreSQL', status: postgresStatus, port: '5432' },
-      { name: 'Redis', status: redisStatus, port: '6379' },
-      { name: 'Elasticsearch', status: elasticStatus, port: '9200' },
+      { name: 'PostgreSQL', status: postgresStatus, port: postgres.portLabel },
+      { name: 'Redis', status: redisStatus, port: redis.portLabel },
+      { name: 'Elasticsearch', status: elasticStatus, port: elastic.portLabel },
     ];
+  }
+
+  private getTcpEndpoint(
+    host: string,
+    configuredPort: string | undefined,
+    defaultPort: number,
+  ): TcpEndpoint {
+    const portLabel = configuredPort || String(defaultPort);
+    const port = Number(portLabel);
+    return {
+      host,
+      port,
+      portLabel,
+      valid: Number.isInteger(port) && port > 0 && port <= 65535,
+    };
+  }
+
+  private getElasticEndpoint(node: string): TcpEndpoint {
+    try {
+      const url = new URL(node);
+      if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+        throw new Error('Unsupported Elasticsearch protocol');
+      }
+      return this.getTcpEndpoint(
+        url.hostname,
+        url.port || undefined,
+        url.protocol === 'https:' ? 443 : 9200,
+      );
+    } catch {
+      return { host: '', port: 0, portLabel: 'invalid', valid: false };
+    }
   }
 
   private formatStatus(status: string): string {

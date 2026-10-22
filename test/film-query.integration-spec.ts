@@ -68,6 +68,8 @@ describeWithDatabase('Film relations PostgreSQL integration', () => {
     const explain = await dataSource.query(`EXPLAIN (ANALYZE, BUFFERS) ${sql}`, parameters);
     const queryPlan = explain.map((row: { 'QUERY PLAN': string }) => row['QUERY PLAN']).join('\n');
     expect(queryPlan).toContain('Execution Time:');
+    expect(queryPlan).not.toContain('Seq Scan on film_actors');
+    expect(queryPlan).toContain('IDX_film_actors_film_id');
     console.log(`Film relation query plan:\n${queryPlan}`);
 
     const films = await query.getMany();
