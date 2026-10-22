@@ -8,22 +8,11 @@
 
 **File config**: `src/app.module.ts` (inline `TypeOrmModule.forRootAsync`)
 
-```typescript
-{
-  type: 'postgres',
-  host: configService.get('DB_HOST'),
-  port: parseInt(configService.get('DB_PORT') || '5432'),
-  username: configService.get('DB_USERNAME'),
-  password: configService.get('DB_PASSWORD'),
-  database: configService.get('DB_NAME'),
-  entities: [ /* 30 entity */ ],
-  synchronize: true,   // ⚠️ Tự động sync schema → DB (KHÔNG dùng migration)
-}
-```
+Production always sets `synchronize: false` and runs TypeORM migrations. Development synchronizes by default; set `DB_SYNCHRONIZE=false` to use migrations locally. Outside production, `DB_MIGRATIONS_RUN=true|false` controls automatic migration execution.
 
-- **Driver**: PostgreSQL (qua `pg`)
-- **Sync strategy**: `synchronize: true` — schema tự động đồng bộ từ entity khi app khởi động. **Không có migration directory**.
-- **Logger**: Đã comment out `logging: true`.
+Migration files live in `src/database/migrations`; the CLI data source is `src/database/data-source.ts`. Never use `synchronize` in production: schema changes can drop or rewrite columns without a reviewed, reversible migration. Seed data remains separate from schema migrations.
+
+The initial schema migration is generated from current TypeORM entity metadata. It creates tables on a fresh database and adopts an existing synchronized schema when the `films` table is already present. A migration marker ensures rollback only drops schema created by that migration; adopted production data is preserved. The following baseline migration preserves the original deployment history. Review generated schema changes before applying them to production.
 
 ---
 

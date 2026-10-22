@@ -1,4 +1,7 @@
 export function shouldSynchronize(nodeEnv?: string, dbSynchronize?: string): boolean {
+  if (nodeEnv === 'production') {
+    return false;
+  }
   if (dbSynchronize === 'true') {
     return true;
   }
@@ -9,6 +12,9 @@ export function shouldSynchronize(nodeEnv?: string, dbSynchronize?: string): boo
 }
 
 export function shouldRunMigrations(nodeEnv?: string, dbMigrationsRun?: string): boolean {
+  if (nodeEnv === 'production') {
+    return true;
+  }
   if (dbMigrationsRun === 'true') {
     return true;
   }
