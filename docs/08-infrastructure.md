@@ -2,6 +2,16 @@
 
 > **Mô tả**: Docker Compose services, Bull queue, cron job (Schedule), Makefile commands.
 
+## 0. App image and CI
+
+`Dockerfile` builds the Nest app in multiple stages and keeps only production dependencies and `dist/` in the runtime image. GitHub Actions runs lint, build, unit tests, and HTTP end-to-end tests for pushes and pull requests. Required runtime configuration is supplied through environment variables; secrets do not belong in the image.
+
+The `GET /api/v1/films` filter list uses a 60-second Redis cache keyed by filters, sort, page, and page size. Film create/update/delete invalidates the list keys. Redis errors fall back to PostgreSQL. The relation integration test seeds 1,000 films and captures `EXPLAIN (ANALYZE, BUFFERS)` for selected joins across films, genres, and actors. It runs against an isolated `*_test` database in CI.
+
+`GET /api/v1/health` checks PostgreSQL and Redis. Request logs are structured JSON and carry `x-request-id`; Swagger UI is available at `/api/docs`.
+
+Bull retries file uploads with exponential backoff. Each retry uses the same job ID as its Cloudinary public ID, preventing retries from creating a new asset for the same job. Soft-deleted users, roles, permissions, role-permission links, and the existing content entities now use TypeORM delete-date metadata so normal reads consistently exclude deleted records; role restore explicitly opts into deleted rows.
+
 ---
 
 ## 1. Docker Compose Services

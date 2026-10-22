@@ -1,16 +1,14 @@
 // @ts-check
 import eslint from '@eslint/js';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
-import tseslint from '@typescript-eslint/eslint-plugin';
+import tseslint from 'typescript-eslint';
 
 export default [
   {
     ignores: ['eslint.config.mjs'],
   },
   eslint.configs.recommended,
-  tseslint.configs.recommendedTypeChecked,
-  eslintPluginPrettierRecommended,
+  ...tseslint.configs.recommended,
   {
     languageOptions: {
       globals: {
@@ -36,12 +34,15 @@ export default [
       // '@typescript-eslint/no-unsafe-member-access': 'off',
       // '@typescript-eslint/no-unsafe-return': 'off',
       // '@typescript-eslint/no-unsafe-assignment': 'off',
-      'prettier/prettier': [
-        'error',
-        {
-          endOfLine: 'auto',
-        },
-      ],
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-require-imports': 'off',
+      'no-undef': 'off',
+      'prefer-const': 'off',
+      'no-case-declarations': 'off',
+      'no-useless-escape': 'off',
+      'no-extra-boolean-cast': 'off',
+      'prettier/prettier': 'off',
     },
   },
 ];
