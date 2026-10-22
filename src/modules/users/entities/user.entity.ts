@@ -5,6 +5,7 @@ import { Comment } from 'src/modules/comment/entities/comment.entity';
 import {
   Column,
   CreateDateColumn,
+  DeleteDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
@@ -74,7 +75,7 @@ export class User {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @Column({ nullable: true })
+  @DeleteDateColumn({ nullable: true })
   deletedAt: Date;
 
   @Column({ nullable: true })

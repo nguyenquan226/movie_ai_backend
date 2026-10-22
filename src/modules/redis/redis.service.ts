@@ -45,6 +45,15 @@ export class RedisService {
     }
   }
 
+  async setIfNotExists(key: string, value: string, ttlSeconds: number): Promise<boolean> {
+    try {
+      return (await this.redis.set(key, value, 'EX', ttlSeconds, 'NX')) === 'OK';
+    } catch (error) {
+      this.logger.error(`Error setting key if absent ${key}:`, error);
+      throw error;
+    }
+  }
+
   async del(key: string): Promise<number> {
     try {
       return await this.redis.del(key);
@@ -207,6 +216,19 @@ export class RedisService {
       this.logger.error(`Error deleting multiple keys:`, error);
       throw error;
     }
+  }
+
+  async delPattern(pattern: string): Promise<number> {
+    let cursor = '0';
+    let deleted = 0;
+    do {
+      const [nextCursor, keys] = await this.redis.scan(cursor, 'MATCH', pattern, 'COUNT', 100);
+      cursor = nextCursor;
+      if (keys.length > 0) {
+        deleted += await this.redis.del(...keys);
+      }
+    } while (cursor !== '0');
+    return deleted;
   }
 
   pipeline() {

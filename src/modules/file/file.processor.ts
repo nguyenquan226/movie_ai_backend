@@ -37,6 +37,7 @@ export class FileProcessor {
     const { jobId, filename, mimetype, buffer, size, originalPath } = job.data;
 
     this.logger.log(`[Job ${job.id}] Processing: ${filename}`);
+    await this.ensureUploadDir();
 
     let tempPath: string | null = null;
 
@@ -66,7 +67,7 @@ export class FileProcessor {
       } as Express.Multer.File;
 
       await job.progress(60);
-      const result = await this.fileService.uploadFile(file);
+      const result = await this.fileService.uploadFile(file, String(jobId ?? job.id));
       await this.cleanupTempFile(tempPath, job.id);
 
       await job.progress(100);
@@ -77,7 +78,7 @@ export class FileProcessor {
       this.logger.error(`[Job ${job.id}] Error:`, error.message);
 
       if (tempPath) {
-        this.cleanupTempFile(tempPath, job.id);
+        await this.cleanupTempFile(tempPath, job.id);
       }
 
       throw new InternalServerErrorException('Error when upload image: ', error);

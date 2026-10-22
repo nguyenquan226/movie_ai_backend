@@ -15,7 +15,7 @@ export class FileService {
     @InjectQueue('file-upload') private readonly fileQueue: Queue,
   ) {}
 
-  async uploadFile(file: Express.Multer.File) {
+  async uploadFile(file: Express.Multer.File, idempotencyKey?: string) {
     const filePath = file.path;
 
     try {
@@ -23,7 +23,9 @@ export class FileService {
         const uploadStream = cloudinary.uploader.upload_stream(
           {
             folder: 'chillflix-image',
-            public_id: `${file.originalname}-${Date.now()}`,
+            public_id: idempotencyKey
+              ? `upload-${idempotencyKey}`
+              : `${file.originalname}-${Date.now()}`,
           },
           (error, result) => {
             if (error) {

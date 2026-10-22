@@ -3,6 +3,7 @@ import { User } from 'src/modules/users/entities/user.entity';
 import {
   Column,
   CreateDateColumn,
+  DeleteDateColumn,
   Entity,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -32,7 +33,7 @@ export class Role {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @Column({ nullable: true })
+  @DeleteDateColumn({ nullable: true })
   deletedAt: Date;
 
   @Column({ nullable: true })

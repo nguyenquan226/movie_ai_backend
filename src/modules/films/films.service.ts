@@ -47,13 +47,10 @@ export class FilmsService {
       const pendingKey = `view:film:${filmId}:pending`;
       const guardKey = `view:film:${filmId}:user:${userId}`;
 
-      const recentlyViewed = await this.redisService.exists(guardKey);
-      if (recentlyViewed) {
-        console.log('>> Check Guard');
+      const claimed = await this.redisService.setIfNotExists(guardKey, '1', this.REIDS_TTL_GUARD);
+      if (!claimed) {
         return { EC: 0, EM: 'View already counted recently' };
       }
-
-      await this.redisService.set(guardKey, '1', this.REIDS_TTL_GUARD);
 
       await this.redisService.incr(pendingKey);
       await this.redisService.expire(pendingKey, this.REDIS_TTL);
@@ -723,6 +720,16 @@ export class FilmsService {
       const defaultLimit = limit ? limit : 10;
       const defaultPage = page ? page : 1;
 
+      const cacheKey = `${this.FILM_LIST_CACHE_PREFIX}${createHash('sha256')
+        .update(JSON.stringify({ filters, sort, page: defaultPage, limit: defaultLimit }))
+        .digest('hex')}`;
+      try {
+        const cached = await this.redisService.getJson<unknown>(cacheKey);
+        if (cached) return cached;
+      } catch {
+        // Redis is an optimization; keep the database endpoint available during cache outages.
+      }
+
       const queryBuilder = this.filmsRepository.createQueryBuilder('film');
       joinWithCommonFields(queryBuilder, 'film.language', 'language', allcodeCommonFields);
       joinWithCommonFields(queryBuilder, 'film.age', 'age', allcodeCommonFields);
@@ -943,7 +950,7 @@ export class FilmsService {
       // Apply pagination
       const films = await queryBuilder.skip(offset).take(defaultLimit).getMany();
 
-      return {
+      const response = {
         EC: 0,
         EM: 'Get films with filters success',
         meta: {
@@ -954,6 +961,12 @@ export class FilmsService {
         },
         result: plainToInstance(FilmPaginationDto, films),
       };
+      try {
+        await this.redisService.setJson(cacheKey, response, this.FILM_LIST_CACHE_TTL);
+      } catch {
+        // A cache write failure must not fail a successful database read.
+      }
+      return response;
     } catch (error) {
       console.error('Error in film service get films with filters:', error);
       throw new InternalServerErrorException({

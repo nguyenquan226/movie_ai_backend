@@ -26,6 +26,7 @@ import { IUser } from 'src/modules/users/interface/user.interface';
 import { SlugUtil } from 'src/common/utils/slug.util';
 import { UpdateFilmDto } from '../dto/update-film.dto';
 import { count } from 'console';
+import { RedisService } from 'src/modules/redis/redis.service';
 
 @Injectable()
 export class AdminFilmService {
@@ -41,7 +42,16 @@ export class AdminFilmService {
     private filmSearchService: FilmSearchService, //luong add
     private filmProducerService: FilmProducerService,
     private ratingService: RatingService,
+    private redisService: RedisService,
   ) {}
+
+  private async invalidateFilmListCache() {
+    try {
+      await this.redisService.delPattern('films:list:*');
+    } catch (error) {
+      console.warn('Unable to invalidate film list cache', error);
+    }
+  }
 
   async create(createFilmDto: CreateFilmDto, user: IUser) {
     try {
@@ -55,6 +65,7 @@ export class AdminFilmService {
         createdById: user.userId.toString(),
       });
       await this.filmsRepository.save(newFilm);
+      await this.invalidateFilmListCache();
       await this.filmSearchService.indexFilm(newFilm); //luong add
 
       if (directors) {
@@ -208,6 +219,7 @@ export class AdminFilmService {
 
       filmDataRaw.updatedById = user.userId.toString();
       await this.filmsRepository.save(filmDataRaw);
+      await this.invalidateFilmListCache();
       await this.filmSearchService.updateFilmDocument(filmDataRaw); //luong add
 
       if (filmImages) {
@@ -382,6 +394,7 @@ export class AdminFilmService {
       }
       await this.filmsRepository.update(filmId, { deletedById: user.userId.toString() });
       await this.filmsRepository.softDelete(filmId);
+      await this.invalidateFilmListCache();
       await this.filmSearchService.removeFilmFromIndex(filmId); //luong add
 
       return {
@@ -436,9 +449,10 @@ export class AdminFilmService {
 
       await this.filmsRepository.update(filmIds, { deletedById: user.userId.toString() });
       await this.filmsRepository.softDelete(filmIds);
-      await filmIds.forEach(async (filmId) => {
-        await this.filmSearchService.removeFilmFromIndex(filmId);
-      });
+      await this.invalidateFilmListCache();
+      await Promise.all(
+        filmIds.map((filmId) => this.filmSearchService.removeFilmFromIndex(filmId)),
+      );
 
       return {
         EC: 0,
@@ -471,6 +485,7 @@ export class AdminFilmService {
       const isExist = await this.filmsRepository
         .createQueryBuilder('film')
         .withDeleted()
+        .where('film.filmId = :filmId', { filmId })
         .getExists();
 
       if (!isExist) {
@@ -483,6 +498,7 @@ export class AdminFilmService {
       }
 
       await this.filmsRepository.delete({ filmId: filmId });
+      await this.invalidateFilmListCache();
       await this.filmSearchService.removeFilmFromIndex(filmId);
 
       return {
@@ -533,9 +549,10 @@ export class AdminFilmService {
       }
 
       await this.filmsRepository.delete(filmIds);
-      await filmIds.forEach(async (filmId) => {
-        await this.filmSearchService.removeFilmFromIndex(filmId);
-      });
+      await this.invalidateFilmListCache();
+      await Promise.all(
+        filmIds.map((filmId) => this.filmSearchService.removeFilmFromIndex(filmId)),
+      );
 
       return {
         EC: 0,

@@ -413,6 +413,7 @@ export class RolesService {
     try {
       const deletedRole = await this.roleRepository.findOne({
         where: { roleId: id, isDeleted: true },
+        withDeleted: true,
         relations: {
           rolePermission: true,
         },
