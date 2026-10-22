@@ -33,6 +33,7 @@
 | `INIT_PASSWORD` | Password cho admin user trong seed | - |
 | `INNIT_ROLE` | (legacy, có typo) Tạo role mặc định | - |
 | `FRONTEND_URL` | URL frontend (dùng cho CORS, email links) | - |
+| `CORS_ORIGINS` | Comma-separated HTTP and WebSocket CORS allowlist; empty disables cross-origin access | - |
 
 ### 1.4 JWT Tokens
 

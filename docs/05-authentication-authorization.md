@@ -10,6 +10,8 @@ Hệ thống auth gồm 2 lớp:
 1. **Authentication** — Xác thực danh tính (là ai?)
 2. **Authorization** — Phân quyền truy cập (được làm gì?)
 
+Login and refresh endpoints have per-route throttling (5 and 10 requests per minute). HTTP responses use Helmet and CORS origins come from `FRONTEND_URL` / `CORS_ORIGINS`. Logout clears the stored refresh token and adds the presented access token to Redis blacklist until its expiry, so subsequent HTTP and socket handshakes reject it. Redis availability is therefore required for blacklist enforcement.
+
 ---
 
 ## 2. Authentication Flow

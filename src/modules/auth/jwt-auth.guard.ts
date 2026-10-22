@@ -1,4 +1,9 @@
-import { ExecutionContext, ForbiddenException, Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  ExecutionContext,
+  ForbiddenException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';
@@ -28,11 +33,14 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
       context.getClass(),
     ]);
     if (err || !user) {
-      throw err || new UnauthorizedException('Token is not valid or not bear token in header request');
+      throw (
+        err || new UnauthorizedException('Token is not valid or not bear token in header request')
+      );
     }
 
     const targetMethod = request.method;
-    const targetEndpoint = (request as Request & { route?: { path?: string } }).route?.path;
+    const routePath = (request as Request & { route?: { path?: string } }).route?.path;
+    const targetEndpoint = routePath ? `${request.baseUrl}${routePath}` : undefined;
 
     const isExist = hasMatchingPermission(user?.permissions, targetMethod, targetEndpoint);
 

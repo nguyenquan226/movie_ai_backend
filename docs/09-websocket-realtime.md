@@ -15,7 +15,7 @@ Dự án dùng **Socket.IO** (`@nestjs/websockets` + `@nestjs/platform-socket.io
 | `RatingGateway` | `src/modules/rating/socket/rating-gateway.ts` | `/` | Realtime rating (create/update/delete/hide) |
 | `ReportGateway` | `src/modules/report/socket/report-gateway.ts` | `/` | Realtime report notification (admin-only) |
 
-Tất cả gateway dùng chung default namespace (`/`) với CORS `origin: *`, `credentials: true`.
+Tất cả gateway dùng chung default namespace (`/`). CORS uses the configured frontend origin allowlist. Clients authenticate with an access JWT in Socket.IO `auth.token` (preferred) or an Authorization bearer header; the adapter verifies signature, expiry, and logout blacklist before connecting. Query-string tokens are accepted for compatibility and should be avoided because URLs may be logged.
 
 ---
 
