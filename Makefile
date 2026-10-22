@@ -5,13 +5,17 @@
 # Run `make help` to see all available commands.
 # ============================================================================
 
-.PHONY: help install dev start debug prod build clean \
+.PHONY: help install install-ci setup dev start debug prod build clean \
         services-up services-down services-restart \
         db-up db-down db-clean redis-up redis-down redis-clean elastic-up elastic-down elastic-clean \
-        docker-ps docker-logs docker-clean docker-reset \
+        docker-build docker-ps docker-logs docker-clean docker-reset \
         db-logs redis-logs elastic-logs \
-        lint format test test-watch test-cov test-e2e test-debug \
+        lint lint-fix format format-check test test-watch test-cov test-e2e test-integration test-debug \
+        db-migrate db-migration-revert db-migration-generate \
         env-setup check-env check-deps status fresh ensure-services
+
+# Pass MIGRATION=NameOfMigration when generating a migration.
+MIGRATION ?=
 
 # Colors for help output
 CYAN    := \033[36m
@@ -32,66 +36,8 @@ RESET   := \033[0m
 # ============================================================================
 
 help: ## Show this help message
-	@echo ""
-	@echo "$(BOLD)╔══════════════════════════════════════════════════════════════╗$(RESET)"
-	@echo "$(BOLD)║           ChillFlix Backend - CLI Commands              ║$(RESET)"
-	@echo "$(BOLD)╚══════════════════════════════════════════════════════════════╝$(RESET)"
-	@echo ""
-	@echo "$(BOLD)$(GREEN)Setup & Dependencies$(RESET)"
-	@echo "  $(CYAN)make install$(RESET)          Install all npm dependencies"
-	@echo "  $(CYAN)make env-setup$(RESET)        Create .env from .env.example (if not exists)"
-	@echo "  $(CYAN)make setup$(RESET)            Full project setup (env + docker + install)"
-	@echo "  $(CYAN)make fresh$(RESET)            Clean reinstall (remove node_modules + reinstall)"
-	@echo ""
-	@echo "$(BOLD)$(GREEN)Application$(RESET)"
-	@echo "  $(CYAN)make dev$(RESET)              Start app in dev mode (auto-starts services)"
-	@echo "  $(CYAN)make start$(RESET)            Start app in default mode"
-	@echo "  $(CYAN)make debug$(RESET)            Start app in debug mode (watch + inspect)"
-	@echo "  $(CYAN)make prod$(RESET)             Start app in production mode"
-	@echo "  $(CYAN)make build$(RESET)            Build the project for production"
-	@echo "  $(CYAN)make clean$(RESET)            Remove build artifacts (dist/)"
-	@echo ""
-	@echo "$(BOLD)$(GREEN)Docker - Individual Services$(RESET)"
-	@echo "  $(CYAN)make db-up$(RESET)            Start PostgreSQL only"
-	@echo "  $(CYAN)make db-down$(RESET)          Stop PostgreSQL"
-	@echo "  $(CYAN)make redis-up$(RESET)         Start Redis only"
-	@echo "  $(CYAN)make redis-down$(RESET)       Stop Redis"
-	@echo "  $(CYAN)make elastic-up$(RESET)       Start Elasticsearch only"
-	@echo "  $(CYAN)make elastic-down$(RESET)     Stop Elasticsearch"
-	@echo "  $(CYAN)make db-clean$(RESET)        Remove PostgreSQL and its data"
-	@echo "  $(CYAN)make redis-clean$(RESET)     Remove Redis and its data"
-	@echo "  $(CYAN)make elastic-clean$(RESET)   Remove Elasticsearch and its data"
-	@echo ""
-	@echo "$(BOLD)$(GREEN)Docker - Batch Operations$(RESET)"
-	@echo "  $(CYAN)make services-up$(RESET)      Start all services (DB + Redis + ES)"
-	@echo "  $(CYAN)make services-down$(RESET)    Stop all services"
-	@echo "  $(CYAN)make services-restart$(RESET) Restart all services"
-	@echo "  $(CYAN)make docker-ps$(RESET)        Show running containers status"
-	@echo "  $(CYAN)make docker-logs$(RESET)      Follow logs of all containers"
-	@echo "  $(CYAN)make docker-clean$(RESET)     Stop containers and remove volumes (data loss)"
-	@echo "  $(CYAN)make docker-reset$(RESET)    Remove ALL (containers + volumes + images)"
-	@echo ""
-	@echo "$(BOLD)$(GREEN)Docker - Individual Logs$(RESET)"
-	@echo "  $(CYAN)make db-logs$(RESET)          Follow PostgreSQL logs"
-	@echo "  $(CYAN)make redis-logs$(RESET)       Follow Redis logs"
-	@echo "  $(CYAN)make elastic-logs$(RESET)     Follow Elasticsearch logs"
-	@echo ""
-	@echo "$(BOLD)$(GREEN)Testing$(RESET)"
-	@echo "  $(CYAN)make test$(RESET)             Run unit tests"
-	@echo "  $(CYAN)make test-watch$(RESET)       Run tests in watch mode"
-	@echo "  $(CYAN)make test-cov$(RESET)         Run tests with coverage report"
-	@echo "  $(CYAN)make test-e2e$(RESET)         Run end-to-end tests"
-	@echo "  $(CYAN)make test-debug$(RESET)       Run tests in debug mode"
-	@echo ""
-	@echo "$(BOLD)$(GREEN)Code Quality$(RESET)"
-	@echo "  $(CYAN)make lint$(RESET)             Run ESLint and auto-fix issues"
-	@echo "  $(CYAN)make format$(RESET)           Format code with Prettier"
-	@echo ""
-	@echo "$(BOLD)$(GREEN)Utilities$(RESET)"
-	@echo "  $(CYAN)make check-deps$(RESET)       Check if required tools are installed"
-	@echo "  $(CYAN)make check-env$(RESET)        Verify .env file exists and show missing vars"
-	@echo "  $(CYAN)make status$(RESET)           Show project status (containers, env, deps)"
-	@echo ""
+	@echo "ChillFlix Backend commands:"
+	@awk 'BEGIN {FS = ":.*##"} /^[a-zA-Z0-9_-]+:.*##/ {printf "  make %-24s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 # ============================================================================
 # SETUP & DEPENDENCIES
@@ -101,6 +47,9 @@ install: ## Install all npm dependencies
 	@echo "$(BOLD)$(GREEN)Installing dependencies...$(RESET)"
 	npm install
 	@echo "$(BOLD)$(GREEN)Dependencies installed successfully!$(RESET)"
+
+install-ci: ## Install locked npm dependencies for CI (npm ci)
+	npm ci
 
 env-setup: ## Create .env from .env.example if it doesn't exist
 	@if [ ! -f .env ]; then \
@@ -183,9 +132,9 @@ build: ## Build the project for production
 	npm run build
 	@echo "$(BOLD)$(GREEN)Build complete!$(RESET)"
 
-clean: ## Remove build artifacts (dist/)
+clean: ## Remove generated build and coverage artifacts
 	@echo "$(BOLD)$(YELLOW)Cleaning build artifacts...$(RESET)"
-	rm -rf dist
+	rm -rf dist coverage
 	@echo "$(BOLD)$(GREEN)Clean complete!$(RESET)"
 
 # ============================================================================
@@ -260,6 +209,9 @@ services-down: ## Stop all services
 
 services-restart: services-down services-up ## Restart all services
 
+docker-build: ## Build the backend Docker image
+	docker build -t chillflix-backend .
+
 docker-logs: ## Follow logs of all containers
 	docker compose --profile db --profile cache --profile search logs -f
 
@@ -313,6 +265,9 @@ test-e2e: ## Run end-to-end tests
 	@echo "$(BOLD)$(GREEN)Running e2e tests...$(RESET)"
 	npm run test:e2e
 
+test-integration: ## Run database-backed integration tests
+	npm run test:integration
+
 test-debug: ## Run tests in debug mode
 	@echo "$(BOLD)$(GREEN)Running tests in debug mode...$(RESET)"
 	npm run test:debug
@@ -321,13 +276,29 @@ test-debug: ## Run tests in debug mode
 # CODE QUALITY
 # ============================================================================
 
-lint: ## Run ESLint and auto-fix issues
+lint: ## Check TypeScript files with ESLint
 	@echo "$(BOLD)$(GREEN)Running ESLint...$(RESET)"
 	npm run lint
+
+lint-fix: ## Run ESLint and apply safe automatic fixes
+	npx eslint "{src,apps,libs,test}/**/*.ts" --fix
 
 format: ## Format code with Prettier
 	@echo "$(BOLD)$(GREEN)Formatting code with Prettier...$(RESET)"
 	npm run format
+
+format-check: ## Check formatting without modifying files
+	npx prettier --check "src/**/*.ts" "test/**/*.ts"
+
+db-migrate: ## Apply pending TypeORM migrations
+	npm run migration:run
+
+db-migration-revert: ## Revert the latest TypeORM migration
+	npm run migration:revert
+
+db-migration-generate: ## Generate a migration (set MIGRATION=Name)
+	@test -n "$(MIGRATION)" || (echo "Usage: make db-migration-generate MIGRATION=AddSomething"; exit 2)
+	npm run migration:generate -- src/database/migrations/$(MIGRATION)
 
 # ============================================================================
 # UTILITIES
